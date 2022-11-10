@@ -6,6 +6,8 @@ package inventario;
  */
 public class Producto {
     
+    String prueba = "Prueba1";
+    
     
     
     
