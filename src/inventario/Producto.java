@@ -6,9 +6,7 @@ package inventario;
  */
 public class Producto {
     
-    String prueba = "Prueba1";
-    
-    
+    private int prueba;
     private int codigo;
     private int precioUnitario;
     private int stock;
