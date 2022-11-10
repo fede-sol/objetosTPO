@@ -21,7 +21,7 @@ public class Catalogo {
     }
     
     private void importar(){
-        
+        listaProducto = new ArrayList<>();
         
     }
     
