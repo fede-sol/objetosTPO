@@ -80,6 +80,11 @@ public class VistaCatalogo extends javax.swing.JFrame {
         panelInferior.add(botonModificar);
 
         botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonEliminar);
 
         botonFiltrar.setText("Filtrar productos con stock mínimo");
@@ -103,6 +108,16 @@ public class VistaCatalogo extends javax.swing.JFrame {
         actualizarTabla(adminCatalogo.getCatalogo());
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        
+        if(hayFilaSeleccionada()){
+            
+            adminCatalogo.removerProducto(articuloSeleccionado());
+            actualizarTabla(adminCatalogo.getCatalogo());
+        }
+        
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
  
     public static void main(String args[]) {
@@ -206,6 +221,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
     private int articuloSeleccionado() {
 
         if (tablaCatalogo.getSelectedRows().length <= 1) {
+            
             return tablaCatalogo.getSelectedRow();
         }
         return -1;

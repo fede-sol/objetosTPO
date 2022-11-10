@@ -25,7 +25,7 @@ public class AdministradorCatalogo {
 
     public void removerProducto(int cod) {
 
-    
+        catalogo.getListaProducto().remove(cod);
      
      
     }
