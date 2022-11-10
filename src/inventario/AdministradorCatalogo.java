@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Fede
+ * @author Fede fasdf
  */
 public class AdministradorCatalogo {
     
@@ -39,7 +39,7 @@ public ArrayList<Producto> getProductosStockMin(){
     return null;
 }
 
-     
+    
      
      
      
