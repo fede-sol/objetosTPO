@@ -87,8 +87,8 @@ public class VistaCatalogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-
-        new VistaProducto();
+        this.setEnabled(false);
+        new VistaProducto(this);
 
         
     }//GEN-LAST:event_botonAgregarActionPerformed

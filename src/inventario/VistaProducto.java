@@ -14,9 +14,11 @@ public class VistaProducto extends javax.swing.JFrame {
     /**
      * Creates new form VistaProducto
      */
-    public VistaProducto() {
+    public VistaProducto(VistaCatalogo vistaCatalogo) {
         initComponents();
         setVisible(true);
+        
+        vistaCatalogoAdmin = vistaCatalogo;
     }
 
  
@@ -28,21 +30,26 @@ public class VistaProducto extends javax.swing.JFrame {
         panelSuperior = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         panelCentral = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        tfStock = new javax.swing.JTextField();
+        tfStockMinimo = new javax.swing.JTextField();
+        tfPrecio = new javax.swing.JTextField();
+        tfDescripcion = new javax.swing.JTextField();
+        labelStockMinimo = new javax.swing.JLabel();
+        labelStock = new javax.swing.JLabel();
+        labelPrecio = new javax.swing.JLabel();
+        labelDescripcion = new javax.swing.JLabel();
         panelInferior = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(192, 77));
         setPreferredSize(new java.awt.Dimension(500, 312));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         titulo.setText("Agregar producto");
         panelSuperior.add(titulo);
@@ -51,16 +58,16 @@ public class VistaProducto extends javax.swing.JFrame {
 
         panelCentral.setLayout(new java.awt.GridBagLayout());
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfStock.setPreferredSize(new java.awt.Dimension(80, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        panelCentral.add(jTextField1, gridBagConstraints);
+        panelCentral.add(tfStock, gridBagConstraints);
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfStockMinimo.setPreferredSize(new java.awt.Dimension(80, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 9;
@@ -68,9 +75,9 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 0);
-        panelCentral.add(jTextField2, gridBagConstraints);
+        panelCentral.add(tfStockMinimo, gridBagConstraints);
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfPrecio.setPreferredSize(new java.awt.Dimension(80, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
@@ -78,18 +85,18 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 0);
-        panelCentral.add(jTextField3, gridBagConstraints);
+        panelCentral.add(tfPrecio, gridBagConstraints);
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(200, 20));
+        tfDescripcion.setPreferredSize(new java.awt.Dimension(200, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        panelCentral.add(jTextField4, gridBagConstraints);
+        panelCentral.add(tfDescripcion, gridBagConstraints);
 
-        jLabel2.setText("Stock mínimo");
+        labelStockMinimo.setText("Stock mínimo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
@@ -97,9 +104,9 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 46);
-        panelCentral.add(jLabel2, gridBagConstraints);
+        panelCentral.add(labelStockMinimo, gridBagConstraints);
 
-        jLabel3.setText("Stock");
+        labelStock.setText("Stock");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -107,9 +114,9 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 46);
-        panelCentral.add(jLabel3, gridBagConstraints);
+        panelCentral.add(labelStock, gridBagConstraints);
 
-        jLabel4.setText("Precio");
+        labelPrecio.setText("Precio");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -117,9 +124,9 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 46);
-        panelCentral.add(jLabel4, gridBagConstraints);
+        panelCentral.add(labelPrecio, gridBagConstraints);
 
-        jLabel5.setText("Descripcion");
+        labelDescripcion.setText("Descripcion");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -127,38 +134,50 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 46);
-        panelCentral.add(jLabel5, gridBagConstraints);
+        panelCentral.add(labelDescripcion, gridBagConstraints);
 
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("Guardar");
-        panelInferior.add(jButton1);
+        botonGuardar.setText("Guardar");
+        panelInferior.add(botonGuardar);
 
-        jButton2.setText("Cancelar");
-        panelInferior.add(jButton2);
+        botonCancelar.setText("Cancelar");
+        panelInferior.add(botonCancelar);
 
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+        vistaCatalogoAdmin.setEnabled(true);
+        vistaCatalogoAdmin.toFront();
+
+        
+    }//GEN-LAST:event_formWindowClosed
+
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JLabel labelDescripcion;
+    private javax.swing.JLabel labelPrecio;
+    private javax.swing.JLabel labelStock;
+    private javax.swing.JLabel labelStockMinimo;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelInferior;
     private javax.swing.JPanel panelSuperior;
+    private javax.swing.JTextField tfDescripcion;
+    private javax.swing.JTextField tfPrecio;
+    private javax.swing.JTextField tfStock;
+    private javax.swing.JTextField tfStockMinimo;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
+
+
+    private VistaCatalogo vistaCatalogoAdmin;
+
 }
