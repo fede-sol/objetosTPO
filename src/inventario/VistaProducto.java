@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inventario;
 
 /**
@@ -14,11 +9,12 @@ public class VistaProducto extends javax.swing.JFrame {
     /**
      * Creates new form VistaProducto
      */
-    public VistaProducto(VistaCatalogo vistaCatalogo) {
+    public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo) {
         initComponents();
         setVisible(true);
         
         vistaCatalogoAdmin = vistaCatalogo;
+        this.adminCatalogo = adminCatalogo;
     }
 
  
@@ -139,6 +135,11 @@ public class VistaProducto extends javax.swing.JFrame {
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
 
         botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonGuardar);
 
         botonCancelar.setText("Cancelar");
@@ -147,6 +148,7 @@ public class VistaProducto extends javax.swing.JFrame {
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -156,6 +158,23 @@ public class VistaProducto extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_formWindowClosed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        
+        adminCatalogo.
+                guardarProducto(
+                        new Producto(
+                                adminCatalogo.ultimoCodigoDeProducto()+1,
+                                Integer.parseInt(tfPrecio.getText()),
+                                Integer.parseInt(tfStock.getText()),
+                                Integer.parseInt(tfStockMinimo.getText()),
+                                tfDescripcion.getText())
+                );
+        
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
 
 
@@ -179,5 +198,6 @@ public class VistaProducto extends javax.swing.JFrame {
 
 
     private VistaCatalogo vistaCatalogoAdmin;
+    private AdministradorCatalogo adminCatalogo;
 
 }

@@ -12,7 +12,7 @@ public class Producto {
     private int stockMinimo;
     private String descripcion;
 
-    public Producto(int codigo, int precioUnitario, int stock, int stockUnitario, int stockMinimo,String descripcion){
+    public Producto(int codigo, int precioUnitario, int stock, int stockMinimo,String descripcion){
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precioUnitario = precioUnitario;

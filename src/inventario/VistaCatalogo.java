@@ -36,6 +36,11 @@ public class VistaCatalogo extends javax.swing.JFrame {
         botonFiltrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         panelSuperior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 60, 5));
 
@@ -88,10 +93,16 @@ public class VistaCatalogo extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         this.setEnabled(false);
-        new VistaProducto(this);
+        new VistaProducto(this,adminCatalogo);
 
         
     }//GEN-LAST:event_botonAgregarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        actualizarTabla(adminCatalogo.getCatalogo());
+        
+    }//GEN-LAST:event_formWindowActivated
 
  
     public static void main(String args[]) {
@@ -168,7 +179,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
         tablaCatalogo.setModel(modeloTabla);
     }
 
-    private void actualizarTabla(Catalogo catalogo) {
+    protected void actualizarTabla(Catalogo catalogo) {
         LinkedList<Producto> listaAuxiliar = new LinkedList<>(catalogo.getListaProducto());
 
         modeloTabla.setRowCount(listaAuxiliar.size());

@@ -20,7 +20,7 @@ public class AdministradorCatalogo {
     }
 
     public void guardarProducto(Producto p) {
-
+        catalogo.getListaProducto().add(p);
     }
 
     public void removerProducto(int cod) {
@@ -34,5 +34,10 @@ public class AdministradorCatalogo {
     private void importarCatalogo(){
         
         catalogo = new Catalogo();
+    }
+    
+    public int ultimoCodigoDeProducto(){
+        return catalogo.getListaProducto().size();
+        
     }
 }
