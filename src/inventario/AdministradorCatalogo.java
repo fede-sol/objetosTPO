@@ -1,10 +1,10 @@
 package inventario;
 
-
+import java.util.ArrayList;
 
 /**
  *
- * @author Fede
+ * @author Fede fasdf
  */
 public class AdministradorCatalogo {
 
