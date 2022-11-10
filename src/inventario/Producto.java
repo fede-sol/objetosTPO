@@ -6,7 +6,6 @@ package inventario;
  */
 public class Producto {
     
-    private int prueba;
     private int codigo;
     private int precioUnitario;
     private int stock;
