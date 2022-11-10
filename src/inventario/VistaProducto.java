@@ -143,6 +143,11 @@ public class VistaProducto extends javax.swing.JFrame {
         panelInferior.add(botonGuardar);
 
         botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonCancelar);
 
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
@@ -175,6 +180,12 @@ public class VistaProducto extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
 
 
