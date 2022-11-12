@@ -110,7 +110,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private AdministradorRegistroVentas adminVentas;
     private DefaultTableModel modeloTabla;
-    private final String[] TITULO_COLUMNAS = {"ID Venta", "Producto", "Cantidad", "Pago" ,"Total"};
+    private final String[] TITULO_COLUMNAS = {"ID Venta", "Producto y Cantidad", "Pago" ,"Total"};
     
     
     private void crearTabla(RegistroVentas registro){
@@ -120,9 +120,10 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         for (int i = 0; i < listaAuxiliar.size(); i++) {
             
             datos[i][0] = listaAuxiliar.get(i).getIdVenta();
-            datos[i][1] = listaAuxiliar.get(i).getCarrito();
-            datos[i][2] = listaAuxiliar.get(i).toText();
-            datos[i][3] = listaAuxiliar.get(i).getTotal();
+            datos[i][1] = listaAuxiliar.get(i).toText();
+            datos[i][0] = listaAuxiliar.get(i).getPago().toText();
+            datos[i][2] = listaAuxiliar.get(i).getTotal();
+      
         }
         
         modeloTabla = new DefaultTableModel(datos, TITULO_COLUMNAS) {
