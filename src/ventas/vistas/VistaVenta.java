@@ -1,6 +1,5 @@
 package ventas.vistas;
 
-import inventario.Catalogo;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
@@ -90,6 +89,11 @@ public class VistaVenta extends javax.swing.JFrame {
         panelIzquierdo.add(botonAgregarProducto, gridBagConstraints);
 
         botonEliminarProducto.setText("Eliminar artículo");
+        botonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarProductoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -145,6 +149,16 @@ public class VistaVenta extends javax.swing.JFrame {
         actualizarTabla(adminVentas.getVenta().getCarrito());
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
+       
+        if(hayFilaSeleccionada()){
+            
+            adminVentas.eliminarProducto(codigoArticuloSeleccionado());
+            actualizarTabla(adminVentas.getVenta().getCarrito());
+        }
+        
+    }//GEN-LAST:event_botonEliminarProductoActionPerformed
 
 
 

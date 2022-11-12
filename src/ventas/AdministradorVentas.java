@@ -67,6 +67,18 @@ public class AdministradorVentas {
     
     public void eliminarProducto(int cod){
         
+        int i = 0;
+        
+        while(listadoCatalogoAuxiliar.get(i).getCodigo() != cod)
+            i++;
+        
+        int j = 0;
+        
+        while(venta.getCarrito().get(j).getCodigo() != cod)
+            j++;
+        
+        listadoCatalogoAuxiliar.get(i).setStock(listadoCatalogoAuxiliar.get(i).getStock() + venta.getCarrito().get(j).getCantidad());
+        venta.getCarrito().remove(j);
         
     }
     
