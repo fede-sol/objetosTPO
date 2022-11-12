@@ -125,6 +125,11 @@ public class VistaVenta extends javax.swing.JFrame {
         botonContinuar.setMaximumSize(new java.awt.Dimension(120, 35));
         botonContinuar.setMinimumSize(new java.awt.Dimension(120, 35));
         botonContinuar.setPreferredSize(new java.awt.Dimension(120, 35));
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -161,6 +166,14 @@ public class VistaVenta extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonEliminarProductoActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        
+        new VistaElegirMedioDePago().setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
 
 
