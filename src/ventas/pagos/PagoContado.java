@@ -28,4 +28,8 @@ public class PagoContado extends Pago {
         return (total- (float)(total*0.1));
     }
     
+    public String toText() {
+        return "Pago Al Contado";
+    }
+    
 }
