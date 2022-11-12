@@ -26,6 +26,10 @@ public class Venta {
         
     }
     
+    public Pago getPago() {
+        return pago;
+    }
+    
     private void calcularSubtotal() {
        
     }
