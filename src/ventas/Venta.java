@@ -18,7 +18,7 @@ public class Venta {
         carrito = new ArrayList<>();
     }
     
-    public ArrayList<Detalle> getDetalle() {
+    public ArrayList<Detalle> getCarrito() {
         return this.carrito;
     }
     

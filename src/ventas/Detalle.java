@@ -14,12 +14,15 @@ public class Detalle {
     private int codigo;
     private float precioUnitario;
     private int cantidad;
+    private String descripcion;
+
     
-    public Detalle(Venta ventaRealizada, int codigo, float precioUnitario, int cantidad) {
+    public Detalle(Venta ventaRealizada, int codigo, float precioUnitario, int cantidad,String descripcion) {
         this.ventaRealizada = ventaRealizada;
         this.codigo = codigo;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
+        this.descripcion = descripcion;
     }
     
     public void setProducto(int idProducto){
@@ -47,4 +50,11 @@ public class Detalle {
     }
     
     
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

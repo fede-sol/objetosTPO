@@ -18,7 +18,7 @@ public class PagoContado extends Pago {
     }
     
     public float calcularTotal() {
-        ArrayList<Detalle> totales = this.getVenta().getDetalle();
+        ArrayList<Detalle> totales = this.getVenta().getCarrito();
         float total = 0;
         
         for(Detalle i: totales){

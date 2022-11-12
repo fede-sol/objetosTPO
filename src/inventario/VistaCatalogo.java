@@ -185,7 +185,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
     private javax.swing.JLabel tituloCatalogo;
     // End of variables declaration//GEN-END:variables
 
-    AdministradorCatalogo adminCatalogo;
+    private AdministradorCatalogo adminCatalogo;
     
     private DefaultTableModel modeloTabla;
     private final String[] TITULO_COLUMNAS = {"Código","Descripción", "Stock", "Precio"};
@@ -199,7 +199,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
             datos[i][0] = listaAuxiliar.get(i).getCodigo();
             datos[i][1] = listaAuxiliar.get(i).getDescripcion();
             datos[i][2] = listaAuxiliar.get(i).getStock();
-            datos[i][2] = listaAuxiliar.get(i).getPrecioUnitario();
+            datos[i][3] = listaAuxiliar.get(i).getPrecioUnitario();
 
         }
 
