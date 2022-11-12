@@ -122,8 +122,16 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             datos[i][0] = listaAuxiliar.get(i).getIdVenta();
             datos[i][1] = listaAuxiliar.get(i).getCarrito();
             datos[i][2] = listaAuxiliar.get(i).toText();
-            
+            datos[i][3] = listaAuxiliar.get(i).getTotal();
         }
+        
+        modeloTabla = new DefaultTableModel(datos, TITULO_COLUMNAS) {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
     }
 
 
