@@ -18,17 +18,13 @@ public class PagoDebito extends Pago {
         super(v);
     }
     
-    public float calcularTotal() {
-        ArrayList<Detalle> totales = this.getVenta().getCarrito();
-        float total = 0;
+    @Override
+    public void calcularTotal() {
         
-        for(Detalle i: totales){
-            total = total + (i.getPrecioUnitario() * i.getCantidad());
-        }
-        
-        return total;
+        total = venta.getSubtotal();
     }
     
+    @Override
     public String toText() {
         return "Pago Débito";
     }

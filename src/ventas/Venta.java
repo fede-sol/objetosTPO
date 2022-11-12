@@ -29,16 +29,13 @@ public class Venta {
     }
     
     public void setPago(Pago p) {
-        
+        this.pago = p;
     }
     
     public Pago getPago() {
         return pago;
     }
     
-    private void calcularSubtotal() {
-       
-    }
     
     public float getSubtotal() {
         return this.subtotal;
@@ -48,11 +45,13 @@ public class Venta {
         
         this.id = id;
     }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
     
 
-    public int getId() {
-        return id;
-    }
+
     
 
     public int getIdVenta(){

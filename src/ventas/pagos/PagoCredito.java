@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ventas.pagos;
-import inventario.*;
-import java.util.ArrayList;
 import ventas.Venta;
 /**
  *
@@ -13,24 +11,39 @@ import ventas.Venta;
 public class PagoCredito extends Pago {
     
     private int cantCuotas;
-    private float precioCuotas;
+    private float precioCuota;
     
     public PagoCredito(Venta v, int cantCuotas) {
         super(v);
         this.cantCuotas = cantCuotas;
     }
     
-    public float calcularTotal() {
+    @Override
+    public void calcularTotal() {
  
-        return 0;
+        switch (cantCuotas) {
+            case 2:
+                total = venta.getSubtotal() + venta.getSubtotal()*6/100;
+                precioCuota = (venta.getSubtotal() + (venta.getSubtotal()*6/100))/2;
+                break;
+            case 3:
+                total = venta.getSubtotal() + venta.getSubtotal()*12/100;
+                precioCuota = (venta.getSubtotal() + (venta.getSubtotal()*12/100))/3;
+                break;
+            case 6:
+                total = venta.getSubtotal() + venta.getSubtotal()*20/100;
+                precioCuota = (venta.getSubtotal() + (venta.getSubtotal()*20/100))/6;
+                break;
+            default:
+                total = venta.getSubtotal();
+                precioCuota = venta.getSubtotal();
+                break;
+        }
     }
     
-    public float getPrecioCuotas() {
+
     
-        
-        return 0;
-    }
-    
+    @Override
     public String toText() {
         return "Pago Crédito";
     }

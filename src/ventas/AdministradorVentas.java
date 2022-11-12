@@ -54,7 +54,7 @@ public class AdministradorVentas {
         
         venta.getCarrito().add(
                 new Detalle(
-                        venta.getId(),
+                        venta.getIdVenta(),
                         cod,
                         p.getPrecioUnitario(),
                         cant,
@@ -83,7 +83,11 @@ public class AdministradorVentas {
     }
     
     public void registrarVenta(){
+        venta.getPago().calcularTotal();
+        venta.setTotal(venta.getPago().getTotal());
         
+        
+        // aca hay que poner el codigo para guardar la venta en el registro de ventas
         
     }
     

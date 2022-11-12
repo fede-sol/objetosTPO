@@ -172,7 +172,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         
         adminVentas.calcularSubtotal();
-        new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal()).setVisible(true);
+        new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal(),adminVentas).setVisible(true);
         
         
         

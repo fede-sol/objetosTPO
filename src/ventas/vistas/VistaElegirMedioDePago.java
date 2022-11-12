@@ -223,8 +223,8 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         
         deshabilitarOpcionesCuotas();
         tituloInteresDescuento.setVisible(true);
-        tituloInteresDescuento.setText("Descuento: 20%");
-        campoTotal.setText(String.valueOf(SUBTOTAL - SUBTOTAL*20/100));
+        tituloInteresDescuento.setText("Descuento: 10%");
+        campoTotal.setText(String.valueOf(SUBTOTAL - SUBTOTAL*10/100));
     }//GEN-LAST:event_rbEfectivoActionPerformed
 
     private void cbCuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCuotasActionPerformed
@@ -249,7 +249,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
             
         }
         
-
+        adminVentas.registrarVenta();
         
         
     }//GEN-LAST:event_botonConfirmarActionPerformed
