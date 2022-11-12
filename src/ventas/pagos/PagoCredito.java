@@ -31,4 +31,8 @@ public class PagoCredito extends Pago {
         return 0;
     }
     
+    public String toText() {
+        return "Pago Crédito";
+    }
+    
 }

@@ -20,4 +20,5 @@ public abstract class Pago {
     
     public abstract float calcularTotal();
     
+    public abstract String toText();
 }
