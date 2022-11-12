@@ -22,7 +22,7 @@ public class AdministradorVentas {
         adminCatalogo = new AdministradorCatalogo();
         adminRegistroVentas = new AdministradorRegistroVentas();
         
-        listadoCatalogoAuxiliar = adminCatalogo.getCatalogo().getListaProducto();
+        listadoCatalogoAuxiliar = new ArrayList<>(adminCatalogo.getCatalogo().getListaProducto());
         venta.setIdVenta(adminRegistroVentas.getRegistroVentas().getCantidadVentas()+1);
     }
 
@@ -35,9 +35,24 @@ public class AdministradorVentas {
     
     public void agregarProducto(int cant, int cod){
         
-        Producto p = adminCatalogo.buscarProducto(cod);
-        venta.getCarrito().add(new Detalle(0,cod,p.getPrecioUnitario(),cant,p.getDescripcion()));
+        int i = 0;
         
+        while(listadoCatalogoAuxiliar.get(i).getCodigo() != cod)
+            i++;
+        
+        Producto p = listadoCatalogoAuxiliar.get(i);
+        
+        venta.getCarrito().add(
+                new Detalle(
+                        venta.getId(),
+                        cod,
+                        p.getPrecioUnitario(),
+                        cant,
+                        p.getDescripcion()));
+        
+        listadoCatalogoAuxiliar.get(i).setStock(p.getStock()-cant);
+        
+         
     }
     
     public void eliminarProducto(int cod){

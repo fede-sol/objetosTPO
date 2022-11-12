@@ -10,15 +10,15 @@ import inventario.*;
  */
 public class Detalle {
     
-    private Venta ventaRealizada;
+    private int idVenta;
     private int codigo;
     private float precioUnitario;
     private int cantidad;
     private String descripcion;
 
     
-    public Detalle(Venta ventaRealizada, int codigo, float precioUnitario, int cantidad,String descripcion) {
-        this.ventaRealizada = ventaRealizada;
+    public Detalle(int idVenta,int codigo, float precioUnitario, int cantidad,String descripcion) {
+        this.idVenta = idVenta;
         this.codigo = codigo;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;

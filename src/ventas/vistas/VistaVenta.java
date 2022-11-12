@@ -1,5 +1,6 @@
 package ventas.vistas;
 
+import inventario.Catalogo;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
@@ -17,6 +18,8 @@ public class VistaVenta extends javax.swing.JFrame {
         
         adminVentas = new AdministradorVentas();
         crearTabla(adminVentas.getVenta().getCarrito());
+        
+        
     }
 
     /**
@@ -70,6 +73,11 @@ public class VistaVenta extends javax.swing.JFrame {
         panelIzquierdo.setLayout(new java.awt.GridBagLayout());
 
         botonAgregarProducto.setText("Agregar artículo");
+        botonAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarProductoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -120,6 +128,13 @@ public class VistaVenta extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarProductoActionPerformed
+      
+        new VistaAgregarProducto(this,adminVentas).setVisible(true);
+        
+        
+    }//GEN-LAST:event_botonAgregarProductoActionPerformed
+
 
 
 
@@ -138,7 +153,15 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 
-
+    /*
+    * este catalogo es una copia del original y va a ser el que voy a manipular durante la venta
+    * cuando agregue articulos al carrito, se va a descontar el stock de este catalogo auxiliar
+    * una vez terminada la venta, el catalogo original va a ser reemplazado por esta copia
+    * en caso de que se cancele la venta, no afecta al catalogo original
+    */
+    
+    
+    
     private AdministradorVentas adminVentas;
     
     private DefaultTableModel modeloTabla;

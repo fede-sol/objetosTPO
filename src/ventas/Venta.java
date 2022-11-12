@@ -13,7 +13,7 @@ public class Venta {
     private float total;
     private ArrayList<Detalle> carrito;
     private Pago pago;
-    
+
     public Venta() {
         carrito = new ArrayList<>();
     }
@@ -43,6 +43,12 @@ public class Venta {
         this.id = id;
     }
     
+
+    public int getId() {
+        return id;
+    }
+    
+
     public int getIdVenta(){
         return id;
     }
@@ -58,6 +64,7 @@ public class Venta {
         }
         return resultado;
     }
+
 
     
 }
