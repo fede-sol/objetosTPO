@@ -91,4 +91,14 @@ public class AdministradorVentas {
         return listadoCatalogoAuxiliar;
     }
 
+    
+    public int calcularSubtotal(){
+        
+        int subtotal = 0;
+        
+        for(Detalle d : venta.getCarrito())
+            subtotal += d.getPrecioUnitario() * d.getCantidad();
+        
+        return subtotal;
+    }
 }

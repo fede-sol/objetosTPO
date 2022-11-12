@@ -112,7 +112,7 @@ public class VistaVenta extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(29, 0, 29, 0);
         panelInferior.add(textoSubtotal, gridBagConstraints);
 
-        campoSubtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoSubtotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         campoSubtotal.setEnabled(false);
         campoSubtotal.setMinimumSize(new java.awt.Dimension(20, 20));
         campoSubtotal.setPreferredSize(new java.awt.Dimension(100, 29));
@@ -147,6 +147,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
         actualizarTabla(adminVentas.getVenta().getCarrito());
+        campoSubtotal.setText(String.valueOf(adminVentas.calcularSubtotal()));
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -156,6 +157,7 @@ public class VistaVenta extends javax.swing.JFrame {
             
             adminVentas.eliminarProducto(codigoArticuloSeleccionado());
             actualizarTabla(adminVentas.getVenta().getCarrito());
+            campoSubtotal.setText(String.valueOf(adminVentas.calcularSubtotal()));
         }
         
     }//GEN-LAST:event_botonEliminarProductoActionPerformed
@@ -244,6 +246,7 @@ public class VistaVenta extends javax.swing.JFrame {
         }
         return -1;
     }
+    
 
 
 
