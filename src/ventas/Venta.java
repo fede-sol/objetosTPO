@@ -39,6 +39,17 @@ public class Venta {
         this.id = id;
     }
     
+    public int getIdVenta(){
+        return id;
+    }
+    
+    public String toText() {
+        String resultado = "";
+        for(int i = 0; i < carrito.size(); i++) {
+            resultado = String.valueOf(carrito.get(i).getCodigo()) + " " + String.valueOf(carrito.get(i).getCantidad()) + "\n";
+        }
+        return resultado;
+    }
 
     
 }
