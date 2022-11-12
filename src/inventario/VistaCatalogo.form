@@ -42,6 +42,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAtrasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCatalogo">
           <Properties>
