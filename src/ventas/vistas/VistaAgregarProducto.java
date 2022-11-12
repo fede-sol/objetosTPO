@@ -121,11 +121,14 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
        
         if(hayFilaSeleccionada()){
-            if((int) campoCantidad.getValue() > 0)
+            if((int) campoCantidad.getValue() > 0){
                 adminVentas.agregarProducto((int) campoCantidad.getValue(), codigoArticuloSeleccionado());
-            else
+                this.dispose();
+                adminVistaVenta.toFront();
+            }    
+            else{
                 System.out.println("todo mal");
-            
+            }
                 
                 
         }

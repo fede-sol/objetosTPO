@@ -25,7 +25,7 @@ public class AdministradorRegistroVentas {
     
     public void agregarVenta(Venta v) {
         registroVentas.getListaVentas().add(v);
-        registroVentas.setCantidadVentas(registroVentas.getCantidadVentas()+ 1);;
+        registroVentas.setCantidadVentas(registroVentas.getCantidadVentas()+ 1);
         
     }
     

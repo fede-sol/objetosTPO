@@ -46,6 +46,11 @@ public class VistaVenta extends javax.swing.JFrame {
         botonContinuar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         botonAtras.setText("Atrás");
         panelSuperior.add(botonAtras);
@@ -135,6 +140,12 @@ public class VistaVenta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonAgregarProductoActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        actualizarTabla(adminVentas.getVenta().getCarrito());
+        
+    }//GEN-LAST:event_formWindowActivated
+
 
 
 
@@ -153,13 +164,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 
-    /*
-    * este catalogo es una copia del original y va a ser el que voy a manipular durante la venta
-    * cuando agregue articulos al carrito, se va a descontar el stock de este catalogo auxiliar
-    * una vez terminada la venta, el catalogo original va a ser reemplazado por esta copia
-    * en caso de que se cancele la venta, no afecta al catalogo original
-    */
-    
+  
     
     
     private AdministradorVentas adminVentas;

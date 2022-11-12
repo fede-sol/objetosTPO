@@ -14,6 +14,16 @@ public class AdministradorVentas {
     private Venta venta;
     private AdministradorCatalogo adminCatalogo;
     private AdministradorRegistroVentas adminRegistroVentas;
+    
+    
+      /*
+    * este catalogo es una copia del original y va a ser el que voy a manipular durante la venta
+    * cuando agregue articulos al carrito, se va a descontar el stock de este catalogo auxiliar
+    * una vez terminada la venta, el catalogo original va a ser reemplazado por esta copia
+    * en caso de que se cancele la venta, no afecta al catalogo original
+    */
+    
+    
     private ArrayList<Producto> listadoCatalogoAuxiliar; 
     
     public AdministradorVentas(){
