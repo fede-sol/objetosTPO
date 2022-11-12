@@ -29,4 +29,8 @@ public class PagoDebito extends Pago {
         return total;
     }
     
+    public String toText() {
+        return "Pago Débito";
+    }
+    
 }
