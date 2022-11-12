@@ -1,5 +1,6 @@
 package ventas.vistas;
 
+import ejecucion.VistaMenuPrincipal;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
@@ -52,6 +53,11 @@ public class VistaVenta extends javax.swing.JFrame {
         });
 
         botonAtras.setText("Atrás");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
         panelSuperior.add(botonAtras);
 
         titulo.setText("Nueva venta");
@@ -144,6 +150,7 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void botonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarProductoActionPerformed
       
+        this.setEnabled(false);
         new VistaAgregarProducto(this,adminVentas).setVisible(true);
         
         
@@ -171,12 +178,20 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         
+        this.setEnabled(false);
         adminVentas.calcularSubtotal();
-        new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal(),adminVentas).setVisible(true);
+        new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal(),adminVentas,this).setVisible(true);
         
         
         
     }//GEN-LAST:event_botonContinuarActionPerformed
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        this.dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            new VistaMenuPrincipal().setVisible(true);
+        });
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
 
 

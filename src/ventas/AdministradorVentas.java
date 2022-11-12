@@ -86,6 +86,9 @@ public class AdministradorVentas {
         venta.getPago().calcularTotal();
         venta.setTotal(venta.getPago().getTotal());
         
+        adminCatalogo.getCatalogo().setListaProducto(listadoCatalogoAuxiliar);
+        adminCatalogo.exportarCatalogo();
+        
         
         // aca hay que poner el codigo para guardar la venta en el registro de ventas
         

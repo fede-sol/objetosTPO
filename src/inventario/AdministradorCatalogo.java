@@ -65,7 +65,7 @@ public class AdministradorCatalogo {
         
     }
     
-    private void exportarCatalogo(){
+    public void exportarCatalogo(){
         
         fileHandler.exportarObjeto(catalogo, RUTA_INVENTARIO);
     }

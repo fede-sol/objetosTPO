@@ -1,5 +1,6 @@
 package ventas.vistas;
 
+import ejecucion.VistaMenuPrincipal;
 import ventas.AdministradorVentas;
 import ventas.pagos.PagoContado;
 import ventas.pagos.PagoCredito;
@@ -12,10 +13,11 @@ import ventas.pagos.PagoDebito;
 public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
 
-    public VistaElegirMedioDePago(float subtotal,AdministradorVentas adminVentas) {
+    public VistaElegirMedioDePago(float subtotal,AdministradorVentas adminVentas,VistaVenta adminVistaVenta) {
         initComponents();
         deshabilitarOpcionesCuotas();
         
+        this.adminVistaVenta = adminVistaVenta;
         this.adminVentas = adminVentas;
         
         this.SUBTOTAL = subtotal;
@@ -55,6 +57,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         titulo.setText("Elige el método de pago");
         panelSuperior.add(titulo);
@@ -196,6 +203,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         panelInferior.add(botonConfirmar);
 
         botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonCancelar);
 
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
@@ -250,9 +262,25 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         }
         
         adminVentas.registrarVenta();
+        this.dispose();
+        adminVistaVenta.dispose();
         
+            java.awt.EventQueue.invokeLater(() -> {
+                new VistaMenuPrincipal().setVisible(true);
+        });
         
     }//GEN-LAST:event_botonConfirmarActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        this.dispose();
+      
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+      
+        adminVistaVenta.setEnabled(true);
+        adminVistaVenta.toFront();
+    }//GEN-LAST:event_formWindowClosed
 
 
 
@@ -278,6 +306,8 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private AdministradorVentas adminVentas;
+    
+    private VistaVenta adminVistaVenta;
     
     private final float SUBTOTAL;
 

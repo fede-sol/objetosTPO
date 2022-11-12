@@ -23,6 +23,10 @@ public class Catalogo implements Serializable{
         listaProducto = new ArrayList<>();
         ultimoCodigo = 0;
     }
+
+    public void setListaProducto(ArrayList<Producto> listaProducto) {
+        this.listaProducto = listaProducto;
+    }
     
     public int getUltimoCodigo() {
         return ultimoCodigo;

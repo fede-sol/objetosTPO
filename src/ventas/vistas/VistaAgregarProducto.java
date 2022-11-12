@@ -45,6 +45,11 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(151, 280));
         setPreferredSize(new java.awt.Dimension(635, 280));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         botonAtras.setText("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +129,6 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
             if((int) campoCantidad.getValue() > 0){
                 adminVentas.agregarProducto((int) campoCantidad.getValue(), codigoArticuloSeleccionado());
                 this.dispose();
-                adminVistaVenta.toFront();
             }    
             else{
                 System.out.println("todo mal");
@@ -139,8 +143,6 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         
         this.dispose();
-        adminVistaVenta.setEnabled(true);
-        adminVistaVenta.toFront();
        
       
     }//GEN-LAST:event_botonAtrasActionPerformed
@@ -151,6 +153,13 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_tablaCatalogoMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       
+        adminVistaVenta.setEnabled(true);
+        adminVistaVenta.toFront();
+        
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
