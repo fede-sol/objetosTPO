@@ -12,18 +12,25 @@ public class Catalogo implements Serializable{
     
     private ArrayList<Producto> listaProducto;
 
+    private int ultimoCodigo;
+
     public ArrayList<Producto> getListaProducto() {
         return listaProducto;
     }
     
     
     public Catalogo(){
-        importar();
+        listaProducto = new ArrayList<>();
+        ultimoCodigo = 0;
     }
     
-    private void importar(){
-        listaProducto = new ArrayList<>();
-        
+    public int getUltimoCodigo() {
+        return ultimoCodigo;
     }
+
+    public void setUltimoCodigo(int ultimoCodigo) {
+        this.ultimoCodigo = ultimoCodigo;
+    }
+   
     
 }

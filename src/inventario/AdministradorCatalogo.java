@@ -13,7 +13,7 @@ import utilidades.FileHandler;
 public class AdministradorCatalogo {
 
     private Catalogo catalogo = new Catalogo();
-    private int ultimoCodigo;
+    
     private FileHandler fileHandler = new FileHandler();
     private final File RUTA_INVENTARIO = new File("src/saves/catalogo.dat");
     
@@ -28,7 +28,7 @@ public class AdministradorCatalogo {
 
     public void guardarProducto(Producto p) {
         catalogo.getListaProducto().add(p);
-        ultimoCodigo++;
+        catalogo.setUltimoCodigo(catalogo.getUltimoCodigo()+1);
         exportarCatalogo();
     }
 
@@ -61,7 +61,7 @@ public class AdministradorCatalogo {
             Logger.getLogger(AdministradorCatalogo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        ultimoCodigo = 0;
+        
         
     }
     
@@ -71,7 +71,7 @@ public class AdministradorCatalogo {
     }
 
     public int getUltimoCodigo() {
-        return ultimoCodigo;
+        return catalogo.getUltimoCodigo();
     }
     
     public Producto buscarProducto(int cod){
