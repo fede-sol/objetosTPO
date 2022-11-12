@@ -40,7 +40,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         botonConfirmar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         titulo.setText("Elige el método de pago");
         panelSuperior.add(titulo);
@@ -52,39 +52,36 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         botonesMetodoDePago.add(rbEfectivo);
         rbEfectivo.setText("Efectivo");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(43, 97, 0, 0);
         panelCentral.add(rbEfectivo, gridBagConstraints);
 
         botonesMetodoDePago.add(rbDebito);
         rbDebito.setText("Débito");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(43, 0, 0, 0);
         panelCentral.add(rbDebito, gridBagConstraints);
 
         botonesMetodoDePago.add(rbCredito);
         rbCredito.setText("Crédito");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.insets = new java.awt.Insets(43, 18, 0, 0);
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 64);
         panelCentral.add(rbCredito, gridBagConstraints);
 
         campoTotal.setEnabled(false);
         campoTotal.setPreferredSize(new java.awt.Dimension(100, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.ipady = 10;
-        gridBagConstraints.insets = new java.awt.Insets(54, 10, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 11, 25, 11);
         panelCentral.add(campoTotal, gridBagConstraints);
 
         tituloTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -92,25 +89,26 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         tituloTotal.setMinimumSize(new java.awt.Dimension(40, 30));
         tituloTotal.setPreferredSize(new java.awt.Dimension(40, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.insets = new java.awt.Insets(52, 140, 0, 0);
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.insets = new java.awt.Insets(21, 11, 25, 20);
         panelCentral.add(tituloTotal, gridBagConstraints);
 
         cbCuotas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "2", "3", "6", " " }));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.insets = new java.awt.Insets(36, 22, 0, 0);
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(17, 0, 17, 0);
         panelCentral.add(cbCuotas, gridBagConstraints);
 
         tituloCuotas.setText("Cantidad de cuotas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(39, 69, 0, 0);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(17, 12, 17, 0);
         panelCentral.add(tituloCuotas, gridBagConstraints);
 
         tituloValorCuotas.setText("Valor por cada cuota");
@@ -118,36 +116,37 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(9, 69, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 17, 0);
         panelCentral.add(tituloValorCuotas, gridBagConstraints);
 
         campoValorCuota.setEnabled(false);
         campoValorCuota.setPreferredSize(new java.awt.Dimension(80, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 74;
-        gridBagConstraints.insets = new java.awt.Insets(6, 22, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 16, 17, 0);
         panelCentral.add(campoValorCuota, gridBagConstraints);
 
         tituloInteres.setText("Interés");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.insets = new java.awt.Insets(39, 36, 0, 0);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(17, 0, 17, 0);
         panelCentral.add(tituloInteres, gridBagConstraints);
 
         campoInteres.setEnabled(false);
         campoInteres.setPreferredSize(new java.awt.Dimension(40, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 34;
-        gridBagConstraints.insets = new java.awt.Insets(36, 2, 0, 71);
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.insets = new java.awt.Insets(17, 10, 17, 10);
         panelCentral.add(campoInteres, gridBagConstraints);
 
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
@@ -161,6 +160,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
