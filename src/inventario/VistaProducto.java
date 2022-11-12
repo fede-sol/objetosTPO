@@ -2,19 +2,62 @@ package inventario;
 
 /**
  *
- * @author Fede
+ * esta ventana sirve tanto para crear como para modificar los productos
+ * en el constructor se explica como se indica para que va a servir la ventana
  */
 public class VistaProducto extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProducto
+     * 
+     * 
+     * @param tipoDeOperacion sirve para indicar si se va a crear un producto o a modificar uno existente, 
+     * si es 0 es para creación, 1 es para modificar
+     * 
      */
-    public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo) {
+    public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo, int tipoDeOperacion) {
         initComponents();
         setVisible(true);
         
         vistaCatalogoAdmin = vistaCatalogo;
         this.adminCatalogo = adminCatalogo;
+        this.tipoDeOperacion = tipoDeOperacion;
+        
+        
+        titulo.setText("Agregar producto");
+        
+    }
+    
+     /**
+     * Creates new form VistaProducto
+     * 
+     * 
+     * @param tipoDeOperacion sirve para indicar si se va a crear un producto o a modificar uno existente, 
+     * si es 0 es para creación, 1 es para modificar
+     * 
+     * @param cod sirve para identificar el producto a modificar
+     * 
+     */
+    public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo, int tipoDeOperacion,int cod) {
+        initComponents();
+        setVisible(true);
+        
+        
+        vistaCatalogoAdmin = vistaCatalogo;
+        this.adminCatalogo = adminCatalogo;
+        this.tipoDeOperacion = tipoDeOperacion;
+        
+        
+        titulo.setText("Modificar producto");
+        
+        productoAuxiliar = adminCatalogo.buscarProducto(cod);
+        
+        tfDescripcion.setText(productoAuxiliar.getDescripcion());
+        tfStock.setText(String.valueOf(productoAuxiliar.getStock()));
+        tfStockMinimo.setText(String.valueOf(productoAuxiliar.getStockMinimo()));
+        tfPrecio.setText(String.valueOf(productoAuxiliar.getPrecioUnitario()));
+
+        
     }
 
  
@@ -47,7 +90,6 @@ public class VistaProducto extends javax.swing.JFrame {
             }
         });
 
-        titulo.setText("Agregar producto");
         panelSuperior.add(titulo);
 
         getContentPane().add(panelSuperior, java.awt.BorderLayout.PAGE_START);
@@ -165,17 +207,26 @@ public class VistaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        
-        adminCatalogo.
-                guardarProducto(
-                        new Producto(
-                                adminCatalogo.ultimoCodigoDeProducto()+1,
-                                Integer.parseInt(tfPrecio.getText()),
-                                Integer.parseInt(tfStock.getText()),
-                                Integer.parseInt(tfStockMinimo.getText()),
-                                tfDescripcion.getText())
-                );
-        
+        if(tipoDeOperacion == 0){
+            adminCatalogo.
+                    guardarProducto(
+                            new Producto(
+                                    adminCatalogo.getUltimoCodigo()+1,
+                                    Integer.parseInt(tfPrecio.getText()),
+                                    Integer.parseInt(tfStock.getText()),
+                                    Integer.parseInt(tfStockMinimo.getText()),
+                                    tfDescripcion.getText())
+                    );
+        }else{
+            adminCatalogo.
+                    modificarProducto(
+                        productoAuxiliar.getCodigo(), 
+                        tfDescripcion.getText(), 
+                        Integer.parseInt(tfPrecio.getText()), 
+                        Integer.parseInt(tfStock.getText()), 
+                        Integer.parseInt(tfStockMinimo.getText()));
+            
+        }
         
         this.dispose();
         
@@ -210,5 +261,7 @@ public class VistaProducto extends javax.swing.JFrame {
 
     private VistaCatalogo vistaCatalogoAdmin;
     private AdministradorCatalogo adminCatalogo;
+    private int tipoDeOperacion;
+    private Producto productoAuxiliar;
 
 }

@@ -84,6 +84,11 @@ public class VistaCatalogo extends javax.swing.JFrame {
         panelInferior.add(botonAgregar);
 
         botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonModificar);
 
         botonEliminar.setText("Eliminar");
@@ -95,6 +100,11 @@ public class VistaCatalogo extends javax.swing.JFrame {
         panelInferior.add(botonEliminar);
 
         botonFiltrar.setText("Filtrar productos con stock mínimo");
+        botonFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFiltrarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonFiltrar);
 
         getContentPane().add(panelInferior, java.awt.BorderLayout.SOUTH);
@@ -105,7 +115,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         this.setEnabled(false);
-        new VistaProducto(this,adminCatalogo);
+        new VistaProducto(this,adminCatalogo,0);
         
         
         
@@ -121,7 +131,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
         
         if(hayFilaSeleccionada()){
             
-            adminCatalogo.removerProducto(articuloSeleccionado());
+            adminCatalogo.removerProducto(codigoArticuloSeleccionado());
             actualizarTabla(adminCatalogo.getCatalogo());
         }
         
@@ -139,6 +149,25 @@ public class VistaCatalogo extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        
+        
+        if(hayFilaSeleccionada()){
+            
+            this.setEnabled(false);
+            new VistaProducto(this,adminCatalogo,1,codigoArticuloSeleccionado());
+        }
+        
+        
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void botonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFiltrarActionPerformed
+        
+        this.setEnabled(false);
+        new VistaProductosStockMin(this,adminCatalogo);
+        
+    }//GEN-LAST:event_botonFiltrarActionPerformed
 
  
 
@@ -209,11 +238,11 @@ public class VistaCatalogo extends javax.swing.JFrame {
         return tablaCatalogo.isRowSelected(tablaCatalogo.getSelectedRow());
     }
 
-    private int articuloSeleccionado() {
+    private int codigoArticuloSeleccionado() {
 
         if (tablaCatalogo.getSelectedRows().length <= 1) {
             
-            return tablaCatalogo.getSelectedRow();
+            return Integer.parseInt(String.valueOf(tablaCatalogo.getValueAt(tablaCatalogo.getSelectedRow(), 0)));
         }
         return -1;
     }

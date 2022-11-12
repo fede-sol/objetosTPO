@@ -42,9 +42,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="titulo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar producto"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
