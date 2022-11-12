@@ -26,6 +26,10 @@ public class Venta {
         
     }
     
+    public Pago getPago() {
+        return pago;
+    }
+    
     private void calcularSubtotal() {
        
     }
@@ -39,10 +43,28 @@ public class Venta {
         this.id = id;
     }
     
+
     public int getId() {
         return id;
     }
     
+
+    public int getIdVenta(){
+        return id;
+    }
+    
+    public float getTotal() {
+        return total;
+    }
+    
+    public String toText() {
+        String resultado = "";
+        for(int i = 0; i < carrito.size(); i++) {
+            resultado = String.valueOf(carrito.get(i).getCodigo()) + " " + String.valueOf(carrito.get(i).getCantidad()) + "\n";
+        }
+        return resultado;
+    }
+
 
     
 }
