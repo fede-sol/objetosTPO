@@ -43,6 +43,10 @@ public class Venta {
         return id;
     }
     
+    public float getTotal() {
+        return total;
+    }
+    
     public String toText() {
         String resultado = "";
         for(int i = 0; i < carrito.size(); i++) {
