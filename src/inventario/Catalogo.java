@@ -1,12 +1,13 @@
 package inventario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Fede
  */
-public class Catalogo {
+public class Catalogo implements Serializable{
    
     
     private ArrayList<Producto> listaProducto;

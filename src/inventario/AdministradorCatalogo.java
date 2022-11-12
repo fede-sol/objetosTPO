@@ -1,6 +1,11 @@
 package inventario;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utilidades.FileHandler;
 
 /**
  *
@@ -8,8 +13,10 @@ import java.util.ArrayList;
  */
 public class AdministradorCatalogo {
 
-    private Catalogo catalogo;
+    private Catalogo catalogo = new Catalogo();
     private int ultimoCodigo;
+    private FileHandler fileHandler = new FileHandler();
+    private final File RUTA_INVENTARIO = new File("src/saves/catalogo.dat");
     
     public AdministradorCatalogo(){
         importarCatalogo();
@@ -23,12 +30,13 @@ public class AdministradorCatalogo {
     public void guardarProducto(Producto p) {
         catalogo.getListaProducto().add(p);
         ultimoCodigo++;
+        exportarCatalogo();
     }
 
     public void removerProducto(int cod) {
 
         catalogo.getListaProducto().remove(buscarProducto(cod));
-     
+        exportarCatalogo();
      
     }
     
@@ -41,13 +49,26 @@ public class AdministradorCatalogo {
         p.setStock(stock);
         p.setStockMinimo(stockMin);
         
+        exportarCatalogo();
     }
     
     
     private void importarCatalogo(){
         
-        catalogo = new Catalogo();
+        if (RUTA_INVENTARIO.exists()){
+            try {
+                catalogo = (Catalogo) fileHandler.importarObjeto(RUTA_INVENTARIO);
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdministradorCatalogo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         ultimoCodigo = 0;
+        
+    }
+    
+    private void exportarCatalogo(){
+        
+        fileHandler.exportarObjeto(catalogo, RUTA_INVENTARIO);
     }
 
     public int getUltimoCodigo() {

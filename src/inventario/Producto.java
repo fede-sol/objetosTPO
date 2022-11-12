@@ -1,10 +1,12 @@
 package inventario;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fede
  */
-public class Producto {
+public class Producto implements Serializable{
     
     private int codigo;
     private int precioUnitario;
