@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package ventas;
+import ventas.pagos.Pago;
 import java.util.Date;
 import java.util.ArrayList;
 /**
@@ -12,35 +8,37 @@ import java.util.ArrayList;
  */
 public class Venta {
     
-    private int idVenta; //tal vez despues agrego fecha porque lo dijo el profe
+    private int id; //tal vez despues agrego fecha porque lo dijo el profe
+    private float subtotal;
     private float total;
-    private ArrayList<Detalle> detalles;
+    private ArrayList<Detalle> carrito;
     private Pago pago;
     
-    public Venta(Pago p) {
-        this.pago = p;
-        detalles = new ArrayList<Detalle>();
+    public Venta() {
+        carrito = new ArrayList<>();
     }
     
     public ArrayList<Detalle> getDetalle() {
-        return this.detalles;
+        return this.carrito;
     }
     
     public void setPago(Pago p) {
-        this.pago = p;
+        
     }
     
-    private void setTotal() {
-        this.total = pago.calcularTotal();
+    private void calcularSubtotal() {
+       
     }
     
-    public float getTotal() {
-        setTotal();
-        return this.total;
+    public float getSubtotal() {
+        return this.subtotal;
     }
     
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+    public void setIdVenta(int id){
+        
+        this.id = id;
     }
+    
+
     
 }

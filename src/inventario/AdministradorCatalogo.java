@@ -39,7 +39,7 @@ public class AdministradorCatalogo {
      
     }
     
-    public void modificarProducto(int cod, String descripcion, int precio, int stock, int stockMin){
+    public void modificarProducto(int cod, String descripcion, float precio, int stock, int stockMin){
         
         Producto p = buscarProducto(cod);
         

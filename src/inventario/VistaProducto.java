@@ -212,7 +212,7 @@ public class VistaProducto extends javax.swing.JFrame {
                     guardarProducto(
                             new Producto(
                                     adminCatalogo.getUltimoCodigo()+1,
-                                    Integer.parseInt(tfPrecio.getText()),
+                                    Float.parseFloat(tfPrecio.getText()),
                                     Integer.parseInt(tfStock.getText()),
                                     Integer.parseInt(tfStockMinimo.getText()),
                                     tfDescripcion.getText())
@@ -222,7 +222,7 @@ public class VistaProducto extends javax.swing.JFrame {
                     modificarProducto(
                         productoAuxiliar.getCodigo(), 
                         tfDescripcion.getText(), 
-                        Integer.parseInt(tfPrecio.getText()), 
+                        Float.parseFloat(tfPrecio.getText()), 
                         Integer.parseInt(tfStock.getText()), 
                         Integer.parseInt(tfStockMinimo.getText()));
             

@@ -11,39 +11,39 @@ import inventario.*;
 public class Detalle {
     
     private Venta ventaRealizada;
-    private int idProducto;
-    private float precio;
+    private int codigo;
+    private float precioUnitario;
     private int cantidad;
     
-    public Detalle(Venta ventaRealizada, int idProducto, float precio, int cantidad) {
+    public Detalle(Venta ventaRealizada, int codigo, float precioUnitario, int cantidad) {
         this.ventaRealizada = ventaRealizada;
-        this.idProducto = idProducto;
-        this.precio = precio;
+        this.codigo = codigo;
+        this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
     }
     
     public void setProducto(int idProducto){
-        this.idProducto = idProducto;
+        this.codigo = idProducto;
     }
     
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
     
-    public void setPrecio(float precio) {
-        this.precio = precio;
+    public void setPrecioUnitario(float precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
     
-    public int getIdProducto() {
-        return this.idProducto;
+    public int getCodigo() {
+        return this.codigo;
     }
     
     public int getCantidad() {
         return this.cantidad;
     }
     
-    public float getPrecio() {
-        return this.precio;
+    public float getPrecioUnitario() {
+        return this.precioUnitario;
     }
     
     

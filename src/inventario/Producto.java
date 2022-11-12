@@ -9,12 +9,12 @@ import java.io.Serializable;
 public class Producto implements Serializable{
     
     private int codigo;
-    private int precioUnitario;
+    private float precioUnitario;
     private int stock;
     private int stockMinimo;
     private String descripcion;
 
-    public Producto(int codigo, int precioUnitario, int stock, int stockMinimo,String descripcion){
+    public Producto(int codigo, float precioUnitario, int stock, int stockMinimo,String descripcion){
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precioUnitario = precioUnitario;
@@ -28,7 +28,7 @@ public class Producto implements Serializable{
         this.codigo = codigo;
     }
 
-    public void setPrecioUnitario(int precioUnitario) {
+    public void setPrecioUnitario(float precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
@@ -48,7 +48,7 @@ public class Producto implements Serializable{
         return codigo;
     }
 
-    public int getPrecioUnitario() {
+    public float getPrecioUnitario() {
         return precioUnitario;
     }
 
