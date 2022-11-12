@@ -1,5 +1,10 @@
 package ventas.vistas;
 
+import ventas.AdministradorVentas;
+import ventas.pagos.PagoContado;
+import ventas.pagos.PagoCredito;
+import ventas.pagos.PagoDebito;
+
 /**
  *
  * @author Fede
@@ -7,8 +12,17 @@ package ventas.vistas;
 public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
 
-    public VistaElegirMedioDePago() {
+    public VistaElegirMedioDePago(float subtotal,AdministradorVentas adminVentas) {
         initComponents();
+        deshabilitarOpcionesCuotas();
+        
+        this.adminVentas = adminVentas;
+        
+        this.SUBTOTAL = subtotal;
+        
+        campoTotal.setText(String.valueOf(subtotal));
+        
+        
     }
 
     /**
@@ -34,7 +48,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         tituloCuotas = new javax.swing.JLabel();
         tituloValorCuotas = new javax.swing.JLabel();
         campoValorCuota = new javax.swing.JTextField();
-        tituloInteres = new javax.swing.JLabel();
+        tituloInteresDescuento = new javax.swing.JLabel();
         campoInteres = new javax.swing.JTextField();
         panelInferior = new javax.swing.JPanel();
         botonConfirmar = new javax.swing.JButton();
@@ -51,6 +65,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
         botonesMetodoDePago.add(rbEfectivo);
         rbEfectivo.setText("Efectivo");
+        rbEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbEfectivoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -58,6 +77,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
         botonesMetodoDePago.add(rbDebito);
         rbDebito.setText("Débito");
+        rbDebito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbDebitoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -65,6 +89,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
         botonesMetodoDePago.add(rbCredito);
         rbCredito.setText("Crédito");
+        rbCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCreditoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
@@ -75,7 +104,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         campoTotal.setEnabled(false);
         campoTotal.setPreferredSize(new java.awt.Dimension(100, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.gridheight = 2;
@@ -93,10 +122,16 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(21, 11, 25, 20);
         panelCentral.add(tituloTotal, gridBagConstraints);
 
-        cbCuotas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "2", "3", "6", " " }));
+        cbCuotas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "6" }));
+        cbCuotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCuotasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -130,15 +165,16 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 16, 17, 0);
         panelCentral.add(campoValorCuota, gridBagConstraints);
 
-        tituloInteres.setText("Interés");
+        tituloInteresDescuento.setText("Interés");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(17, 0, 17, 0);
-        panelCentral.add(tituloInteres, gridBagConstraints);
+        panelCentral.add(tituloInteresDescuento, gridBagConstraints);
 
+        campoInteres.setText("-");
         campoInteres.setEnabled(false);
         campoInteres.setPreferredSize(new java.awt.Dimension(40, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -152,6 +188,11 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
 
         botonConfirmar.setText("Confirmar venta");
+        botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConfirmarActionPerformed(evt);
+            }
+        });
         panelInferior.add(botonConfirmar);
 
         botonCancelar.setText("Cancelar");
@@ -162,6 +203,56 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rbCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCreditoActionPerformed
+        
+        tituloInteresDescuento.setText("Interes");
+        habilitarOpcionesCuotas();
+        actualizarValoresCuotas();
+        campoValorCuota.setText(String.valueOf(SUBTOTAL));
+        
+    }//GEN-LAST:event_rbCreditoActionPerformed
+
+    private void rbDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDebitoActionPerformed
+        
+        deshabilitarOpcionesCuotas();
+        campoTotal.setText(String.valueOf(SUBTOTAL));
+    }//GEN-LAST:event_rbDebitoActionPerformed
+
+    private void rbEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEfectivoActionPerformed
+        
+        deshabilitarOpcionesCuotas();
+        tituloInteresDescuento.setVisible(true);
+        tituloInteresDescuento.setText("Descuento: 20%");
+        campoTotal.setText(String.valueOf(SUBTOTAL - SUBTOTAL*20/100));
+    }//GEN-LAST:event_rbEfectivoActionPerformed
+
+    private void cbCuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCuotasActionPerformed
+       
+        actualizarValoresCuotas();
+        
+    }//GEN-LAST:event_cbCuotasActionPerformed
+
+    private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
+       
+        
+        
+        if(rbDebito.isSelected()){
+            adminVentas.getVenta().setPago(new PagoDebito(adminVentas.getVenta()));
+            
+        }else if(rbEfectivo.isSelected()){
+            adminVentas.getVenta().setPago(new PagoContado(adminVentas.getVenta()));
+            
+        }else if(rbCredito.isSelected()){
+            adminVentas.getVenta().setPago(new PagoCredito(adminVentas.getVenta(),Integer.parseInt((String)cbCuotas.getSelectedItem())));
+            
+            
+        }
+        
+
+        
+        
+    }//GEN-LAST:event_botonConfirmarActionPerformed
 
 
 
@@ -181,8 +272,66 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbEfectivo;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel tituloCuotas;
-    private javax.swing.JLabel tituloInteres;
+    private javax.swing.JLabel tituloInteresDescuento;
     private javax.swing.JLabel tituloTotal;
     private javax.swing.JLabel tituloValorCuotas;
     // End of variables declaration//GEN-END:variables
+
+    private AdministradorVentas adminVentas;
+    
+    private final float SUBTOTAL;
+
+    private void deshabilitarOpcionesCuotas(){
+        campoInteres.setVisible(false);
+        campoValorCuota.setVisible(false);
+        tituloCuotas.setVisible(false);
+        tituloInteresDescuento.setVisible(false);
+        tituloValorCuotas.setVisible(false);
+        cbCuotas.setVisible(false);
+        
+        
+    }
+    
+    private void habilitarOpcionesCuotas(){
+        campoInteres.setVisible(true);
+        campoValorCuota.setVisible(true);
+        tituloCuotas.setVisible(true);
+        tituloInteresDescuento.setVisible(true);
+        tituloValorCuotas.setVisible(true);
+        cbCuotas.setVisible(true);
+        
+    }
+    
+    private void actualizarValoresCuotas(){
+        switch (Integer.parseInt((String)cbCuotas.getSelectedItem())) {
+            case 2:
+                campoInteres.setText("6%");
+                campoValorCuota.setText(String.valueOf((SUBTOTAL + (SUBTOTAL*6/100)) /2));
+                campoTotal.setText(String.valueOf(SUBTOTAL+ SUBTOTAL*6/100));
+                break;
+            case 3:
+                campoInteres.setText("12%");
+                campoValorCuota.setText(String.valueOf((SUBTOTAL + (SUBTOTAL*12/100)) /3));
+                campoTotal.setText(String.valueOf(SUBTOTAL+ SUBTOTAL*12/100));
+                break;
+            case 6:
+                campoInteres.setText("20%");
+                campoValorCuota.setText(String.valueOf((SUBTOTAL + (SUBTOTAL*20/100)) /6));
+                campoTotal.setText(String.valueOf(SUBTOTAL+ SUBTOTAL*20/100));
+                break;
+            default:
+                campoInteres.setText("-");
+                campoValorCuota.setText(String.valueOf(SUBTOTAL));
+                campoTotal.setText(String.valueOf(SUBTOTAL));
+                break;
+        }
+        
+    }
+
+
+
+
+
+
+
 }

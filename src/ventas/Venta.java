@@ -12,10 +12,16 @@ public class Venta {
     private float subtotal;
     private float total;
     private ArrayList<Detalle> carrito;
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
     private Pago pago;
 
     public Venta() {
         carrito = new ArrayList<>();
+        subtotal = 0;
+        total = 0;
     }
     
     public ArrayList<Detalle> getCarrito() {

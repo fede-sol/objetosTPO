@@ -92,13 +92,13 @@ public class AdministradorVentas {
     }
 
     
-    public int calcularSubtotal(){
+    public void calcularSubtotal(){
         
-        int subtotal = 0;
+        float subtotal = 0;
         
         for(Detalle d : venta.getCarrito())
             subtotal += d.getPrecioUnitario() * d.getCantidad();
         
-        return subtotal;
+        venta.setSubtotal(subtotal);
     }
 }

@@ -152,7 +152,8 @@ public class VistaVenta extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
         actualizarTabla(adminVentas.getVenta().getCarrito());
-        campoSubtotal.setText(String.valueOf(adminVentas.calcularSubtotal()));
+        adminVentas.calcularSubtotal();
+        campoSubtotal.setText(String.valueOf(adminVentas.getVenta().getSubtotal()));
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -162,14 +163,16 @@ public class VistaVenta extends javax.swing.JFrame {
             
             adminVentas.eliminarProducto(codigoArticuloSeleccionado());
             actualizarTabla(adminVentas.getVenta().getCarrito());
-            campoSubtotal.setText(String.valueOf(adminVentas.calcularSubtotal()));
+            adminVentas.calcularSubtotal();
+            campoSubtotal.setText(String.valueOf(adminVentas.getVenta().getSubtotal()));
         }
         
     }//GEN-LAST:event_botonEliminarProductoActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         
-        new VistaElegirMedioDePago().setVisible(true);
+        adminVentas.calcularSubtotal();
+        new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal()).setVisible(true);
         
         
         
