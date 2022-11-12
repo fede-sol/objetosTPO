@@ -65,7 +65,7 @@ public class FileHandler {
         }
         
         
-        public int importarValor(File ruta) {
+        public int importarEntero(File ruta) {
 
         int numero = 0;
         try {
@@ -81,7 +81,7 @@ public class FileHandler {
         return numero;
     }
 
-    public void exportar(File ruta, int valor) {
+    public void exportarEntero(File ruta, int valor) {
 
         try {
 
