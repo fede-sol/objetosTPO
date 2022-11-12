@@ -34,7 +34,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaRegistro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +47,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
 
         jButton2.setText("Productos Mas Vendidos");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +58,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaRegistro);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,7 +121,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaRegistro;
     // End of variables declaration//GEN-END:variables
     private AdministradorRegistroVentas adminVentas;
     private DefaultTableModel modeloTabla;
@@ -148,6 +148,8 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                 return false;
             }
         };
+        
+        tablaRegistro.setModel(modeloTabla);
     }
 
 
