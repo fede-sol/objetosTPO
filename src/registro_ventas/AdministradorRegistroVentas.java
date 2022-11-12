@@ -12,11 +12,11 @@ import ventas.Venta;
 public class AdministradorRegistroVentas {
     
     private RegistroVentas registroVentas;
-    int cantidadVentas;
+    
     
     public AdministradorRegistroVentas() {
         importarRegistroVentas();
-        cantidadVentas = 0;
+        
     }
     
     private void importarRegistroVentas(){
@@ -25,8 +25,8 @@ public class AdministradorRegistroVentas {
     
     public void agregarVenta(Venta v) {
         registroVentas.getListaVentas().add(v);
-        cantidadVentas++;
-        v.setIdVenta(cantidadVentas); //setea el id de forma incremental
+        registroVentas.setCantidadVentas(registroVentas.getCantidadVentas()+ 1);;
+        
     }
     
     public void getProductosMasVendidos() {
