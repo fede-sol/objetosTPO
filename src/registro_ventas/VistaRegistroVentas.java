@@ -19,6 +19,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     public VistaRegistroVentas() {
         adminVentas = new AdministradorRegistroVentas();
         initComponents();
+        crearTabla(adminVentas.getRegistroVentas());
     }
 
     /**
