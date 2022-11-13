@@ -2,6 +2,7 @@ package ventas.vistas;
 
 import inventario.Producto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
@@ -126,15 +127,20 @@ public class VistaAgregarProducto extends javax.swing.JFrame {
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
        
         if(hayFilaSeleccionada()){
-            if((int) campoCantidad.getValue() > 0){
-                adminVentas.agregarProducto((int) campoCantidad.getValue(), codigoArticuloSeleccionado());
-                this.dispose();
-            }    
-            else{
-                System.out.println("todo mal");
-            }
+            if(codigoArticuloSeleccionado() != -1){
+                if((int) campoCantidad.getValue() > 0){
+                    adminVentas.agregarProducto((int) campoCantidad.getValue(), codigoArticuloSeleccionado());
+                    this.dispose();
+                }    
+                else{
+                    JOptionPane.showMessageDialog(null, "Debes seleccionar una cantidad mayor a 0","Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Solo podes seleccionar uno","Error", JOptionPane.ERROR_MESSAGE);
+            } 
                 
-                
+        }else{
+            JOptionPane.showMessageDialog(null, "No seleccionaste nada","Error", JOptionPane.ERROR_MESSAGE);
         }
         
         
