@@ -91,7 +91,7 @@ public class AdministradorVentas {
         
         
         // aca hay que poner el codigo para guardar la venta en el registro de ventas
-        
+        adminRegistroVentas.agregarVenta(venta);
     }
     
     public ArrayList<Producto> getListadoCatalogoAuxiliar() {
