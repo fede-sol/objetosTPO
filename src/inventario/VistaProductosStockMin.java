@@ -1,7 +1,6 @@
- package inventario;
+package inventario;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -96,7 +95,6 @@ public class VistaProductosStockMin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private VistaCatalogo vistaCatalogoAdmin;
-    private AdministradorCatalogo adminCatalogo;
 
 
     

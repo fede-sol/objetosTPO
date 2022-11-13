@@ -1,5 +1,7 @@
 package inventario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * esta ventana sirve tanto para crear como para modificar los productos
@@ -17,7 +19,7 @@ public class VistaProducto extends javax.swing.JFrame {
      */
     public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo, int tipoDeOperacion) {
         initComponents();
-        setVisible(true);
+       
         
         vistaCatalogoAdmin = vistaCatalogo;
         this.adminCatalogo = adminCatalogo;
@@ -40,7 +42,6 @@ public class VistaProducto extends javax.swing.JFrame {
      */
     public VistaProducto(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo, int tipoDeOperacion,int cod) {
         initComponents();
-        setVisible(true);
         
         
         vistaCatalogoAdmin = vistaCatalogo;
@@ -207,28 +208,44 @@ public class VistaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        if(tipoDeOperacion == 0){
-            adminCatalogo.
-                    guardarProducto(
-                            new Producto(
-                                    adminCatalogo.getUltimoCodigo()+1,
-                                    Float.parseFloat(tfPrecio.getText()),
-                                    Integer.parseInt(tfStock.getText()),
-                                    Integer.parseInt(tfStockMinimo.getText()),
-                                    tfDescripcion.getText())
-                    );
-        }else{
-            adminCatalogo.
-                    modificarProducto(
-                        productoAuxiliar.getCodigo(), 
-                        tfDescripcion.getText(), 
-                        Float.parseFloat(tfPrecio.getText()), 
-                        Integer.parseInt(tfStock.getText()), 
-                        Integer.parseInt(tfStockMinimo.getText()));
+        
+        if(!camposVacios()){
+            try {
+                if(tipoDeOperacion == 0){
+                adminCatalogo.
+                        guardarProducto(
+                                new Producto(
+                                        adminCatalogo.getUltimoCodigo()+1,
+                                        Float.parseFloat(tfPrecio.getText()),
+                                        Integer.parseInt(tfStock.getText()),
+                                        Integer.parseInt(tfStockMinimo.getText()),
+                                        tfDescripcion.getText())
+                        );
+            }else{
+                adminCatalogo.
+                        modificarProducto(
+                            productoAuxiliar.getCodigo(), 
+                            tfDescripcion.getText(), 
+                            Float.parseFloat(tfPrecio.getText()), 
+                            Integer.parseInt(tfStock.getText()), 
+                            Integer.parseInt(tfStockMinimo.getText()));
+
+            }
             
+            this.dispose();
+                
+                
+            } catch (NumberFormatException e) {
+              JOptionPane.showMessageDialog(null, "Introduza caracteres válidos en los campos","Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Quedan campos por rellenar","Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        this.dispose();
+        
+        
         
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -263,5 +280,17 @@ public class VistaProducto extends javax.swing.JFrame {
     private AdministradorCatalogo adminCatalogo;
     private int tipoDeOperacion;
     private Producto productoAuxiliar;
+    
+    
+    private boolean camposVacios(){
+        
+        
+        if(tfDescripcion.getText().isEmpty() || tfPrecio.getText().isEmpty() || tfStock.getText().isEmpty() || tfStockMinimo.getText().isEmpty())
+            return true;
+        else
+            return false;
+    }
+    
+   
 
 }

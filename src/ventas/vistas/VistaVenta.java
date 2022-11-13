@@ -2,6 +2,7 @@
 
 import ejecucion.VistaMenuPrincipal;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
 import ventas.Detalle;
@@ -167,21 +168,32 @@ public class VistaVenta extends javax.swing.JFrame {
     private void botonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarProductoActionPerformed
        
         if(hayFilaSeleccionada()){
+            if(codigoArticuloSeleccionado() != -1){
             
-            adminVentas.eliminarProducto(codigoArticuloSeleccionado());
-            actualizarTabla(adminVentas.getVenta().getCarrito());
-            adminVentas.calcularSubtotal();
-            campoSubtotal.setText(String.valueOf(adminVentas.getVenta().getSubtotal()));
+                adminVentas.eliminarProducto(codigoArticuloSeleccionado());
+                actualizarTabla(adminVentas.getVenta().getCarrito());
+                adminVentas.calcularSubtotal();
+                campoSubtotal.setText(String.valueOf(adminVentas.getVenta().getSubtotal()));
+            }else{
+                JOptionPane.showMessageDialog(null, "Solo podés seleccionar uno","Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }else{
+           JOptionPane.showMessageDialog(null, "No seleccionaste nada","Error", JOptionPane.ERROR_MESSAGE);
+
         }
         
     }//GEN-LAST:event_botonEliminarProductoActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        
-        this.setEnabled(false);
+
+    if(!adminVentas.getVenta().getCarrito().isEmpty()){
         adminVentas.calcularSubtotal();
+        this.setEnabled(false);
         new VistaElegirMedioDePago(adminVentas.getVenta().getSubtotal(),adminVentas,this).setVisible(true);
-        
+    }else{
+        JOptionPane.showMessageDialog(null, "El carrito está vacío","Error", JOptionPane.ERROR_MESSAGE);
+    }
         
         
     }//GEN-LAST:event_botonContinuarActionPerformed
