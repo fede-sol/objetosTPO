@@ -3,6 +3,7 @@ package inventario;
 import ejecucion.VistaMenuPrincipal;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -115,7 +116,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         this.setEnabled(false);
-        new VistaProducto(this,adminCatalogo,0);
+        new VistaProducto(this,adminCatalogo,0).setVisible(true);
         
         
         
@@ -130,9 +131,14 @@ public class VistaCatalogo extends javax.swing.JFrame {
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         
         if(hayFilaSeleccionada()){
-            
-            adminCatalogo.removerProducto(codigoArticuloSeleccionado());
-            actualizarTabla(adminCatalogo.getCatalogo());
+            if(codigoArticuloSeleccionado() != -1){
+                adminCatalogo.removerProducto(codigoArticuloSeleccionado());
+                actualizarTabla(adminCatalogo.getCatalogo());
+            }else{
+                JOptionPane.showMessageDialog(null, "Solo podes seleccionar uno","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No seleccionaste nada","Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_botonEliminarActionPerformed
@@ -154,9 +160,14 @@ public class VistaCatalogo extends javax.swing.JFrame {
         
         
         if(hayFilaSeleccionada()){
-            
-            this.setEnabled(false);
-            new VistaProducto(this,adminCatalogo,1,codigoArticuloSeleccionado());
+            if(codigoArticuloSeleccionado() != -1){
+                this.setEnabled(false);
+                new VistaProducto(this,adminCatalogo,1,codigoArticuloSeleccionado()).setVisible(true);  
+            }else{
+                JOptionPane.showMessageDialog(null, "Solo podes seleccionar uno","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No seleccionaste nada","Error", JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -165,7 +176,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
     private void botonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFiltrarActionPerformed
         
         this.setEnabled(false);
-        new VistaProductosStockMin(this,adminCatalogo);
+        new VistaProductosStockMin(this,adminCatalogo).setVisible(true);
         
     }//GEN-LAST:event_botonFiltrarActionPerformed
 
