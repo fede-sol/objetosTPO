@@ -1,9 +1,8 @@
 package ventas;
 import ventas.pagos.Pago;
-import java.util.Date;
 import java.util.ArrayList;
 /**
- *
+ * 
  * @author Tati
  */
 public class Venta {
@@ -12,11 +11,11 @@ public class Venta {
     private float subtotal;
     private float total;
     private ArrayList<Detalle> carrito;
+    private Pago pago;
 
     public void setSubtotal(float subtotal) {
         this.subtotal = subtotal;
     }
-    private Pago pago;
 
     public Venta() {
         carrito = new ArrayList<>();

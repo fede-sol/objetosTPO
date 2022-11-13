@@ -1,4 +1,4 @@
-package utilidades;
+ package utilidades;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,13 +13,13 @@ import java.io.ObjectOutputStream;
  */
 public class FileHandler {
     
-    FileInputStream fileInput;
-    FileOutputStream fileOutput;
+    private FileInputStream fileInput;
+    private FileOutputStream fileOutput;
    
   
 
-    ObjectInputStream objectInput;
-    ObjectOutputStream objectOutput;
+    private ObjectInputStream objectInput;
+    private ObjectOutputStream objectOutput;
     
     
     public Object importarObjeto(String ruta) throws ClassNotFoundException {
@@ -53,13 +53,13 @@ public class FileHandler {
         return object;
     }
         
-        public void exportarObjeto(Object archivo, File ruta) {
+        public void exportarObjeto(Object objeto, File ruta) {
             try {
                 objectOutput = new ObjectOutputStream(new FileOutputStream(ruta));
-                objectOutput.writeObject(archivo);
+                objectOutput.writeObject(objeto);
                 objectOutput.close();
             } catch (IOException e) {
-                System.out.println("Error al exportar " + archivo + " " + ruta.getAbsolutePath() + " Error: " +  e);
+                System.out.println("Error al exportar " + objeto + " " + ruta.getAbsolutePath() + " Error: " +  e);
             }
 
         }

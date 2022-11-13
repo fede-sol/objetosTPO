@@ -1,4 +1,4 @@
-package ventas;
+ package ventas;
 
 import inventario.AdministradorCatalogo;
 import inventario.Producto;

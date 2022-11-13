@@ -213,8 +213,8 @@ public class VistaCatalogo extends javax.swing.JFrame {
 
         tablaCatalogo.setModel(modeloTabla);
     }
-
-    protected void actualizarTabla(Catalogo catalogo) {
+ 
+    private void actualizarTabla(Catalogo catalogo) {
         LinkedList<Producto> listaAuxiliar = new LinkedList<>(catalogo.getListaProducto());
 
         modeloTabla.setRowCount(listaAuxiliar.size());

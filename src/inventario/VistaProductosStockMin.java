@@ -1,4 +1,4 @@
-package inventario;
+ package inventario;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

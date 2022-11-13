@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package registro_ventas;
-import java.util.ArrayList;
 import ventas.Venta;
 /**
  *

@@ -1,4 +1,4 @@
-package ventas.vistas;
+ package ventas.vistas;
 
 import ejecucion.VistaMenuPrincipal;
 import java.util.ArrayList;
