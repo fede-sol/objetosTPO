@@ -14,13 +14,12 @@ public class VistaProductosStockMin extends javax.swing.JFrame {
     public VistaProductosStockMin(VistaCatalogo vistaCatalogo,AdministradorCatalogo adminCatalogo) {
         
         initComponents();
-        setVisible(true);
+       
         
         
         vistaCatalogoAdmin = vistaCatalogo;
         
         crearTabla(adminCatalogo.getProductosStockMin());
-        actualizarTabla(adminCatalogo.getProductosStockMin());
         
     }
 
@@ -113,7 +112,7 @@ public class VistaProductosStockMin extends javax.swing.JFrame {
             datos[i][0] = listaAuxiliar.get(i).getCodigo();
             datos[i][1] = listaAuxiliar.get(i).getDescripcion();
             datos[i][2] = listaAuxiliar.get(i).getStock();
-            datos[i][2] = listaAuxiliar.get(i).getPrecioUnitario();
+            datos[i][3] = listaAuxiliar.get(i).getPrecioUnitario();
 
         }
 
@@ -128,20 +127,5 @@ public class VistaProductosStockMin extends javax.swing.JFrame {
         tablaProductos.setModel(modeloTabla);
     }
 
-    protected void actualizarTabla(ArrayList<Producto> listaProductosStockMin) {
-        LinkedList<Producto> listaAuxiliar = new LinkedList<>(listaProductosStockMin);
-
-        modeloTabla.setRowCount(listaAuxiliar.size());
-
-        for (int i = 0; i < listaAuxiliar.size(); i++) {
-
-            modeloTabla.setValueAt(listaAuxiliar.get(i).getCodigo(), i, 0);
-            modeloTabla.setValueAt(listaAuxiliar.get(i).getDescripcion(), i, 1);
-            modeloTabla.setValueAt(listaAuxiliar.get(i).getStock(), i, 2);
-            modeloTabla.setValueAt(listaAuxiliar.get(i).getPrecioUnitario(), i, 3);
-
-        }
-
-    }
 
 }

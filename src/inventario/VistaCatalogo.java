@@ -165,7 +165,7 @@ public class VistaCatalogo extends javax.swing.JFrame {
     private void botonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFiltrarActionPerformed
         
         this.setEnabled(false);
-        new VistaProductosStockMin(this,adminCatalogo);
+        new VistaProductosStockMin(this,adminCatalogo).setVisible(true);
         
     }//GEN-LAST:event_botonFiltrarActionPerformed
 
