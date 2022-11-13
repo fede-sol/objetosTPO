@@ -48,10 +48,6 @@ public class Venta {
     public void setTotal(float total) {
         this.total = total;
     }
-    
-
-
-    
 
     public int getIdVenta(){
         return id;
