@@ -17,8 +17,7 @@ import utilidades.FileHandler;
  */
 public class AdministradorRegistroVentas {
     
-    private RegistroVentas registroVentas;
-    private AdministradorCatalogo adminCatalogo;
+    private RegistroVentas registroVentas = new RegistroVentas();
     private FileHandler fileHandler = new FileHandler();
     private final File RUTA_INVENTARIO = new File("src/saves/registroVentas.dat");
     
