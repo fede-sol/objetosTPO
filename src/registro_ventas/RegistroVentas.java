@@ -5,11 +5,12 @@
 package registro_ventas;
 import java.util.ArrayList;
 import ventas.Venta;
+import java.io.Serializable;
 /**
  *
  * @author Tati
  */
-public class RegistroVentas {
+public class RegistroVentas implements Serializable {
     
     private ArrayList<Venta> ventas;
     private int cantidadVentas;
