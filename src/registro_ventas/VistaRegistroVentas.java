@@ -7,6 +7,7 @@ import ejecucion.VistaMenuPrincipal;
 import ventas.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import inventario.AdministradorCatalogo;
 /**
  *
  * @author Tati
