@@ -16,8 +16,12 @@ public class RegistroVentas implements Serializable{
     private int cantidadVentas;
     
     public RegistroVentas() {
-        ventas = new ArrayList<Venta>();
+        ventas = new ArrayList<>();
         cantidadVentas = 0;
+    }
+    
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
     }
 
     public int getCantidadVentas() {

@@ -7,11 +7,21 @@ import ejecucion.VistaMenuPrincipal;
 import ventas.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+
+import java.awt.Component;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author Tati
  */
 public class VistaRegistroVentas extends javax.swing.JFrame {
+    private AdministradorRegistroVentas adminVentas;
+    private DefaultTableModel modeloTabla;
 
     /**
      * Creates new form VistaRegistroVentas
@@ -19,6 +29,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     public VistaRegistroVentas() {
         adminVentas = new AdministradorRegistroVentas();
         initComponents();
+        crearTabla(adminVentas.getRegistroVentas());
     }
 
     /**
@@ -31,21 +42,21 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        btnProdMasVendidos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaRegistro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Atras");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAtrasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Productos Mas Vendidos");
+        btnProdMasVendidos.setText("Productos Mas Vendidos");
 
         tablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,21 +82,21 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(225, 225, 225)
-                        .addComponent(jButton2))
+                        .addComponent(btnProdMasVendidos))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jButton1)))
+                        .addComponent(btnAtras)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jButton1)
+                .addComponent(btnAtras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnProdMasVendidos)
                 .addGap(15, 15, 15))
         );
 
@@ -104,53 +115,84 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         this.dispose();
         
             java.awt.EventQueue.invokeLater(() -> {
                 new VistaMenuPrincipal().setVisible(true);
             });
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     
  
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnProdMasVendidos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaRegistro;
     // End of variables declaration//GEN-END:variables
-    private AdministradorRegistroVentas adminVentas;
-    private DefaultTableModel modeloTabla;
+    
     private final String[] TITULO_COLUMNAS = {"ID Venta", "Producto y Cantidad", "Pago" ,"Total"};
+ 
     
     
     private void crearTabla(RegistroVentas registro){
-        ArrayList<Venta> listaAuxiliar = new ArrayList<>(registro.getListaVentas());
-        Object[][] datos = new Object[listaAuxiliar.size()][TITULO_COLUMNAS.length];
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        for (String i : TITULO_COLUMNAS) {
+            modeloTabla.addColumn(i);
+        }
+        this.tablaRegistro.setModel(modeloTabla);
         
-        for (int i = 0; i < listaAuxiliar.size(); i++) {
+        ArrayList<Venta> listaAuxiliar = new ArrayList<>(registro.getListaVentas());
+        
+        ArrayList<Object[]> datos = new ArrayList<Object[]>();
+        
+        for (int i = 0; i < listaAuxiliar.size(); i ++) {
             
-            datos[i][0] = listaAuxiliar.get(i).getIdVenta();
-            datos[i][1] = listaAuxiliar.get(i).toText();
-            datos[i][0] = listaAuxiliar.get(i).getPago().toText();
-            datos[i][2] = listaAuxiliar.get(i).getTotal();
-      
+            Object[] arrayAux = new Object[TITULO_COLUMNAS.length];
+            arrayAux[0] = listaAuxiliar.get(i).getIdVenta();
+            arrayAux[1] = listaAuxiliar.get(i).toText();
+            arrayAux[2] = listaAuxiliar.get(i).getPago().toText();
+            arrayAux[3] = listaAuxiliar.get(i).getTotal();
+            
+            datos.add(arrayAux);
+        
         }
         
-        modeloTabla = new DefaultTableModel(datos, TITULO_COLUMNAS) {
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return false;
-            }
-        };
+        for(Object[] itemDato : datos) {
+            modeloTabla.addRow(itemDato);
+        }
         
         tablaRegistro.setModel(modeloTabla);
+        //tablaRegistro.getColumnModel().getColumn(1).setCellRenderer(new TextAreaRenderer());
+        
+
+    }
+    /*
+    public class TextAreaRenderer extends JTextArea
+    implements TableCellRenderer {
+
+    public TextAreaRenderer() {
+      setLineWrap(true);
+      setWrapStyleWord(true);
     }
 
+    public Component getTableCellRendererComponent(JTable jTable,
+        Object obj, boolean isSelected, boolean hasFocus, int row,
+        int column) {
+      setText((String)obj);
+      return this;
+    }
+*/
+  }
+    
+    
+    
+    
+    
 
-}
+
+

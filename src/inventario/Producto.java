@@ -1,4 +1,4 @@
-package inventario;
+ package inventario;
 
 import java.io.Serializable;
 

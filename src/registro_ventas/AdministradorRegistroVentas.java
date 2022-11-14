@@ -37,6 +37,7 @@ public class AdministradorRegistroVentas {
         }
     }
     
+    
     public void exportarRegistroVentas(){
         
         fileHandler.exportarObjeto(registroVentas, RUTA_INVENTARIO);
@@ -50,10 +51,7 @@ public class AdministradorRegistroVentas {
     }
     
     public void getProductosMasVendidos() {
-        int cantVentas = registroVentas.getCantidadVentas();
-        ArrayList ventas = registroVentas.getListaVentas();
-        ArrayList productos = adminCatalogo.getCatalogo().getListaProducto();
-        ArrayList productosMasVendidos = new ArrayList();  
+         
     }
     
     

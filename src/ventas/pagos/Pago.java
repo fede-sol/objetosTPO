@@ -1,12 +1,13 @@
 package ventas.pagos;
 
 import ventas.Venta;
+import java.io.Serializable;
 
 /**
  *
  * @author Tati
  */
-public abstract class Pago {
+public abstract class Pago implements Serializable {
 
     
     
