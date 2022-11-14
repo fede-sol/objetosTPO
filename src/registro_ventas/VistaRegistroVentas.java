@@ -14,6 +14,7 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import inventario.AdministradorCatalogo;
+import java.awt.Font;
 
 /**
  *
@@ -46,6 +47,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         btnProdMasVendidos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaRegistro = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +65,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             }
         });
 
+        tablaRegistro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -81,26 +84,29 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             tablaRegistro.getColumnModel().getColumn(1).setPreferredWidth(200);
         }
 
+        jLabel1.setText("Registro de Ventas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(btnProdMasVendidos))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnAtras)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(225, 225, 225)
+                .addComponent(btnProdMasVendidos))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnAtras)
+                .addGap(187, 187, 187)
+                .addComponent(jLabel1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(btnAtras)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtras)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,7 +138,9 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnProdMasVendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdMasVendidosActionPerformed
-        adminVentas.getProductosMasVendidos();
+        
+        this.setEnabled(false);
+        new VistaProductosMasVendidos(this, adminVentas).setVisible(true);
     }//GEN-LAST:event_btnProdMasVendidosActionPerformed
 
     
@@ -142,6 +150,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnProdMasVendidos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaRegistro;
@@ -152,7 +161,14 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     
     
     private void crearTabla(RegistroVentas registro){
-        DefaultTableModel modeloTabla = new DefaultTableModel();
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+            
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+            
+        };
         for (String i : TITULO_COLUMNAS) {
             modeloTabla.addColumn(i);
         }
@@ -195,6 +211,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         public TextAreaRenderer() {
           setLineWrap(true);
           setWrapStyleWord(true);
+          setFont(new Font("Arial", Font.PLAIN, 12));
           
         }
 

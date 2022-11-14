@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import inventario.AdministradorCatalogo;
 import inventario.Catalogo;
 import java.io.File;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilidades.FileHandler;
@@ -52,17 +53,28 @@ public class AdministradorRegistroVentas {
         
     }
     
-    public void getProductosMasVendidos() {
+    public class Item implements Comparable<Item>{
+            int cant;
+            int cod;
+            
+            public int compareTo(Item e) {
+                if(e.cant < cant) {
+                    return -1;
+                } else if(e.cant < cant) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+
+        }
+    
+    public ArrayList getProductosMasVendidos() {
         
         AdministradorCatalogo admin = new AdministradorCatalogo();
         ArrayList<Producto> productos = admin.getCatalogo().getListaProducto();
         ArrayList<Venta> ventas = registroVentas.getListaVentas();
-        
-        class Item {
-            int cant;
-            int cod;
-        }
-        
+
         ArrayList<Item> items = new ArrayList();
         
     
@@ -92,11 +104,8 @@ public class AdministradorRegistroVentas {
                 } 
             }
         }
-        
-        for(int i = 0; i < items.size(); i++) {
-            System.out.print(items.get(i).cod + " ");
-            System.out.print(items.get(i).cant + "\n");
-        }
+        Collections.sort(items);
+        return items;
     }
     
     

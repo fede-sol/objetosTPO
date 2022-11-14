@@ -36,5 +36,13 @@ public class Catalogo implements Serializable{
         this.ultimoCodigo = ultimoCodigo;
     }
    
-    
+    public String getDescripcionPorCodigo(int cod) {
+        String desc = "";
+        for(Producto i : listaProducto) {
+            if(cod == i.getCodigo()){
+                desc = i.getDescripcion();
+            } 
+        }
+        return desc;
+    }
 }
