@@ -161,13 +161,12 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     
     
     private void crearTabla(RegistroVentas registro){
-        DefaultTableModel modeloTabla = new DefaultTableModel() {
-            
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return false;
             }
-            
         };
         for (String i : TITULO_COLUMNAS) {
             modeloTabla.addColumn(i);
