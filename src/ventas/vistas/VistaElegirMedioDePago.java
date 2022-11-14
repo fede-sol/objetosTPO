@@ -83,6 +83,7 @@ public class VistaElegirMedioDePago extends javax.swing.JFrame {
         panelCentral.add(rbEfectivo, gridBagConstraints);
 
         botonesMetodoDePago.add(rbDebito);
+        rbDebito.setSelected(true);
         rbDebito.setText("Débito");
         rbDebito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

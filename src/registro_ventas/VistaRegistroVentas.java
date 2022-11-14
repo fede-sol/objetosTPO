@@ -11,9 +11,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.SwingConstants;
+
+
+
+import inventario.AdministradorCatalogo;
 
 /**
  *
