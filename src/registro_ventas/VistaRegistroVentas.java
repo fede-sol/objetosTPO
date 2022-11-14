@@ -7,13 +7,12 @@ import ejecucion.VistaMenuPrincipal;
 import ventas.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-
-
-
 import inventario.AdministradorCatalogo;
 
 /**
@@ -58,6 +57,11 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         });
 
         btnProdMasVendidos.setText("Productos Mas Vendidos");
+        btnProdMasVendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProdMasVendidosActionPerformed(evt);
+            }
+        });
 
         tablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,15 +74,18 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaRegistro.setRowHeight(30);
         jScrollPane2.setViewportView(tablaRegistro);
+        if (tablaRegistro.getColumnModel().getColumnCount() > 0) {
+            tablaRegistro.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tablaRegistro.getColumnModel().getColumn(1).setPreferredWidth(200);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -124,6 +131,10 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             });
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void btnProdMasVendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdMasVendidosActionPerformed
+        adminVentas.getProductosMasVendidos();
+    }//GEN-LAST:event_btnProdMasVendidosActionPerformed
+
     
  
     
@@ -158,36 +169,54 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             arrayAux[1] = listaAuxiliar.get(i).toText();
             arrayAux[2] = listaAuxiliar.get(i).getPago().toText();
             arrayAux[3] = listaAuxiliar.get(i).getTotal();
-            
+
             datos.add(arrayAux);
         
         }
+        
         
         for(Object[] itemDato : datos) {
             modeloTabla.addRow(itemDato);
         }
         
         tablaRegistro.setModel(modeloTabla);
-        //tablaRegistro.getColumnModel().getColumn(1).setCellRenderer(new TextAreaRenderer());
+        tablaRegistro.getColumnModel().getColumn(1).setCellRenderer(new TextAreaRenderer());
+        actualizarAlturaFila();
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        tablaRegistro.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        tablaRegistro.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        tablaRegistro.getColumnModel().getColumn(3).setCellRenderer(tcr);
         
-
     }
-    /*
-    public class TextAreaRenderer extends JTextArea
-    implements TableCellRenderer {
+    
+    public class TextAreaRenderer extends JTextArea implements TableCellRenderer {
 
-    public TextAreaRenderer() {
-      setLineWrap(true);
-      setWrapStyleWord(true);
-    }
+        public TextAreaRenderer() {
+          setLineWrap(true);
+          setWrapStyleWord(true);
+          
+        }
 
-    public Component getTableCellRendererComponent(JTable jTable,
-        Object obj, boolean isSelected, boolean hasFocus, int row,
-        int column) {
-      setText((String)obj);
-      return this;
+        public Component getTableCellRendererComponent(JTable jTable, Object obj, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText((String)obj);
+            return this;
+        }
     }
-*/
+    
+    private void actualizarAlturaFila() {
+        for (int row = 0; row < tablaRegistro.getRowCount(); row++) {
+            int rowHeight = tablaRegistro.getRowHeight();
+
+            for (int column = 0; column < tablaRegistro.getColumnCount(); column++) {
+                Component comp = tablaRegistro.prepareRenderer(tablaRegistro.getCellRenderer(row, column), row, column);
+                rowHeight = Math.max(rowHeight, comp.getPreferredSize().height);
+            }
+
+            tablaRegistro.setRowHeight(row, rowHeight);
+        }
+    }
+    
   }
     
     

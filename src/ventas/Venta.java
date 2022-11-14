@@ -2,6 +2,7 @@ package ventas;
 import ventas.pagos.Pago;
 import java.util.ArrayList;
 import java.io.Serializable;
+
 /**
  * 
  * @author Tati
@@ -62,10 +63,10 @@ public class Venta implements Serializable{
         String resultado = "";
         for(int i = 0; i < carrito.size(); i++) {
             resultado = resultado + 
-                    "Codigo: " + String.valueOf(carrito.get(i).getCodigo()) + "         " + 
-                    "Cantidad: " + String.valueOf(carrito.get(i).getCantidad()) + "\n";
+                    String.valueOf(carrito.get(i).getDescripcion()) + "  " + 
+                    String.valueOf(carrito.get(i).getCantidad()) + "\n";
         }
-        System.out.println(resultado);
+        //System.out.println(resultado);
         return resultado;
     }
 
