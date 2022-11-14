@@ -10,9 +10,8 @@ import java.io.Serializable;
  *
  * @author Tati
  */
-
-public class RegistroVentas implements Serializable{
-
+public class RegistroVentas implements Serializable {
+    
     private ArrayList<Venta> ventas;
     private int cantidadVentas;
     
