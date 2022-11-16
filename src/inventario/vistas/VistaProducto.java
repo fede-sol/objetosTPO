@@ -98,42 +98,48 @@ public class VistaProducto extends javax.swing.JFrame {
 
         panelCentral.setLayout(new java.awt.GridBagLayout());
 
-        tfStock.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfStock.setMinimumSize(new java.awt.Dimension(80, 30));
+        tfStock.setPreferredSize(new java.awt.Dimension(80, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 31);
         panelCentral.add(tfStock, gridBagConstraints);
 
-        tfStockMinimo.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfStockMinimo.setMinimumSize(new java.awt.Dimension(80, 30));
+        tfStockMinimo.setPreferredSize(new java.awt.Dimension(80, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 0);
+        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 31);
         panelCentral.add(tfStockMinimo, gridBagConstraints);
 
-        tfPrecio.setPreferredSize(new java.awt.Dimension(80, 20));
+        tfPrecio.setMinimumSize(new java.awt.Dimension(80, 30));
+        tfPrecio.setPreferredSize(new java.awt.Dimension(80, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 0);
+        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 31);
         panelCentral.add(tfPrecio, gridBagConstraints);
 
-        tfDescripcion.setPreferredSize(new java.awt.Dimension(200, 20));
+        tfDescripcion.setMinimumSize(new java.awt.Dimension(100, 30));
+        tfDescripcion.setPreferredSize(new java.awt.Dimension(100, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 31);
         panelCentral.add(tfDescripcion, gridBagConstraints);
 
         labelStockMinimo.setText("Stock mínimo");
@@ -143,7 +149,7 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 46);
+        gridBagConstraints.insets = new java.awt.Insets(28, 41, 28, 46);
         panelCentral.add(labelStockMinimo, gridBagConstraints);
 
         labelStock.setText("Stock");
@@ -153,7 +159,7 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 46);
+        gridBagConstraints.insets = new java.awt.Insets(0, 41, 0, 46);
         panelCentral.add(labelStock, gridBagConstraints);
 
         labelPrecio.setText("Precio");
@@ -163,7 +169,7 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 0, 28, 46);
+        gridBagConstraints.insets = new java.awt.Insets(28, 41, 28, 46);
         panelCentral.add(labelPrecio, gridBagConstraints);
 
         labelDescripcion.setText("Descripcion");
@@ -173,7 +179,7 @@ public class VistaProducto extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 46);
+        gridBagConstraints.insets = new java.awt.Insets(0, 41, 0, 46);
         panelCentral.add(labelDescripcion, gridBagConstraints);
 
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
