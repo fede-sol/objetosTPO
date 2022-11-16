@@ -3,10 +3,7 @@ import ventas.pagos.Pago;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-/**
- * 
- * @author Tati
- */
+
 public class Venta implements Serializable{
     
     private int id; 

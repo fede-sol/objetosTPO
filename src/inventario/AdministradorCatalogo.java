@@ -6,10 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilidades.FileHandler;
 
-/**
- *
- * @author Fede
- */
+
 public class AdministradorCatalogo {
 
     private Catalogo catalogo = new Catalogo();

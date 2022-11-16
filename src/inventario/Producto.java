@@ -2,10 +2,7 @@
 
 import java.io.Serializable;
 
-/**
- *
- * @author Fede
- */
+
 public class Producto implements Serializable{
     
     private int codigo;

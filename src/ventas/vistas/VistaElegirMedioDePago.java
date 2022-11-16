@@ -6,10 +6,7 @@ import ventas.pagos.PagoContado;
 import ventas.pagos.PagoCredito;
 import ventas.pagos.PagoDebito;
 
-/**
- *
- * @author Fede
- */
+
 public class VistaElegirMedioDePago extends javax.swing.JFrame {
 
 

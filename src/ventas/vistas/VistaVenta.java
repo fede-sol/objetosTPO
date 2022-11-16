@@ -7,10 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
 import ventas.Detalle;
 
-/**
- *
- * @author Fede
- */
+
 public class VistaVenta extends javax.swing.JFrame {
 
  

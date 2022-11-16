@@ -1,9 +1,7 @@
 package ventas.pagos;
 import ventas.Venta;
-/**
- *
- * @author Tati
- */
+
+
 public class PagoDebito extends Pago {
     
     public PagoDebito(Venta v) {

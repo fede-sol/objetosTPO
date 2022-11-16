@@ -1,15 +1,15 @@
-package inventario;
+package inventario.vistas;
 
 import ejecucion.VistaMenuPrincipal;
+import inventario.AdministradorCatalogo;
+import inventario.Catalogo;
+import inventario.Producto;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Fede
- */
+
 public class VistaCatalogo extends javax.swing.JFrame {
 
   

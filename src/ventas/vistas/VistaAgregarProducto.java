@@ -7,10 +7,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import ventas.AdministradorVentas;
 
-/**
- *
- * @author Fede
- */
+
 public class VistaAgregarProducto extends javax.swing.JFrame {
 
  

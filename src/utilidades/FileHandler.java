@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- *
- * @author Fede
- */
+
 public class FileHandler {
     
     private FileInputStream fileInput;

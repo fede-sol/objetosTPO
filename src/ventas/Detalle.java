@@ -1,9 +1,4 @@
 package ventas;
-
-/**
- *
- * @author Tati
- */
 import java.io.Serializable;
 public class Detalle implements Serializable {
     

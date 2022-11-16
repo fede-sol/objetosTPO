@@ -5,10 +5,7 @@ import inventario.Producto;
 import java.util.ArrayList;
 import registro_ventas.AdministradorRegistroVentas;
 
-/**
- *
- * @author nicolas.r
- */
+
 public class AdministradorVentas {
     
     private Venta venta;

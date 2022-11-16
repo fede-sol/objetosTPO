@@ -1,5 +1,7 @@
-package inventario;
+package inventario.vistas;
 
+import inventario.AdministradorCatalogo;
+import inventario.Producto;
 import javax.swing.JOptionPane;
 
 /**
@@ -84,7 +86,6 @@ public class VistaProducto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(192, 77));
-        setPreferredSize(new java.awt.Dimension(500, 312));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

@@ -1,25 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package registro_ventas;
-import inventario.Catalogo;
 import inventario.AdministradorCatalogo;
 import registro_ventas.AdministradorRegistroVentas.Item;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-/**
- *
- * @author Tati
- */
+import registro_ventas.AdministradorRegistroVentas;
+
+
 public class VistaProductosMasVendidos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaProductosMasVendidos
-     * 
-     */
+
     
     private VistaRegistroVentas v;
     private AdministradorRegistroVentas admin;
@@ -49,6 +40,7 @@ public class VistaProductosMasVendidos extends javax.swing.JFrame {
         btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

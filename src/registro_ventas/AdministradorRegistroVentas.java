@@ -1,29 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package registro_ventas;
 import ventas.*;
-import inventario.*;
 import java.util.ArrayList;
-import inventario.AdministradorCatalogo;
-import inventario.Catalogo;
 import java.io.File;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilidades.FileHandler;
-/**
- *
- * @author Tati
- */
+
+
 public class AdministradorRegistroVentas {
     
     private RegistroVentas registroVentas = new RegistroVentas();
 
 
     private FileHandler fileHandler = new FileHandler();
-    private final File RUTA_INVENTARIO = new File("src/saves/registroVentas.dat");
+    private final File RUTA_REGISTROVENTAS = new File("src/saves/registroVentas.dat");
     
     
     public AdministradorRegistroVentas() {
@@ -31,9 +22,9 @@ public class AdministradorRegistroVentas {
     }
     
     private void importarRegistroVentas(){
-        if (RUTA_INVENTARIO.exists()){
+        if (RUTA_REGISTROVENTAS.exists()){
             try {
-                registroVentas = (RegistroVentas) fileHandler.importarObjeto(RUTA_INVENTARIO);
+                registroVentas = (RegistroVentas) fileHandler.importarObjeto(RUTA_REGISTROVENTAS);
             } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdministradorRegistroVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -43,7 +34,7 @@ public class AdministradorRegistroVentas {
 
     public void exportarRegistroVentas(){
         
-        fileHandler.exportarObjeto(registroVentas, RUTA_INVENTARIO);
+        fileHandler.exportarObjeto(registroVentas, RUTA_REGISTROVENTAS);
     }
     
     public void agregarVenta(Venta v) {
@@ -57,6 +48,7 @@ public class AdministradorRegistroVentas {
             int cant;
             int cod;
             
+            @Override
             public int compareTo(Item e) {
                 if(e.cant < cant) {
                     return -1;
@@ -70,14 +62,13 @@ public class AdministradorRegistroVentas {
         }
     
     public ArrayList getProductosMasVendidos() {
-        
-        AdministradorCatalogo admin = new AdministradorCatalogo();
-        ArrayList<Producto> productos = admin.getCatalogo().getListaProducto();
+                
         ArrayList<Venta> ventas = registroVentas.getListaVentas();
 
         ArrayList<Item> items = new ArrayList();
         
-    
+        
+        
         for (int i = 0; i < ventas.size(); i++){
             ArrayList<Detalle> carrito = ventas.get(i).getCarrito();
             
